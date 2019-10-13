@@ -5,12 +5,12 @@ import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import android.content.Context;
-import android.net.nsd.NsdManager;
 import android.os.Build;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
+
+import com.example.munchkin.creatingservice.CreatingServiceActivity;
+import com.example.munchkin.findingservice.FindingServiceActivity;
 
 @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
 public class MainActivity extends AppCompatActivity {
