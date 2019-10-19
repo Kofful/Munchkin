@@ -22,8 +22,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name="com.example.munchkin.FindingServiceActivity"  android:screenOrientation="sensorLandscape"></activity>
-        <activity android:name="com.example.munchkin.CreatingServiceActivity"  android:screenOrientation="sensorLandscape"/>
+        <activity android:name="com.example.munchkin.findingservice.FindingServiceActivity"  android:screenOrientation="sensorLandscape"></activity>
+        <activity android:name="com.example.munchkin.creatingservice.CreatingServiceActivity"  android:screenOrientation="sensorLandscape"/>
         <activity android:name="com.example.munchkin.MainActivity" android:screenOrientation="sensorLandscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

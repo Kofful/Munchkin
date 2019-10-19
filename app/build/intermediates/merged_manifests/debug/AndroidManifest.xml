@@ -32,10 +32,10 @@
         android:testOnly="true"
         android:theme="@style/Theme.AppCompat.NoActionBar" >
         <activity
-            android:name="com.example.munchkin.FindingServiceActivity"
+            android:name="com.example.munchkin.findingservice.FindingServiceActivity"
             android:screenOrientation="sensorLandscape" />
         <activity
-            android:name="com.example.munchkin.CreatingServiceActivity"
+            android:name="com.example.munchkin.creatingservice.CreatingServiceActivity"
             android:screenOrientation="sensorLandscape" />
         <activity
             android:name="com.example.munchkin.MainActivity"

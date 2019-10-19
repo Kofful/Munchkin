@@ -94,18 +94,18 @@ MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\Vladislav\
 		ADDED from D:\AndroidStudioProjects\Munchkin\app\src\main\AndroidManifest.xml:19:9-35
 	android:theme
 		ADDED from D:\AndroidStudioProjects\Munchkin\app\src\main\AndroidManifest.xml:24:9-59
-activity#com.example.munchkin.FindingServiceActivity
-ADDED from D:\AndroidStudioProjects\Munchkin\app\src\main\AndroidManifest.xml:25:9-134
+activity#com.example.munchkin.findingservice.FindingServiceActivity
+ADDED from D:\AndroidStudioProjects\Munchkin\app\src\main\AndroidManifest.xml:25:9-149
 	android:screenOrientation
-		ADDED from D:\AndroidStudioProjects\Munchkin\app\src\main\AndroidManifest.xml:25:79-122
+		ADDED from D:\AndroidStudioProjects\Munchkin\app\src\main\AndroidManifest.xml:25:94-137
 	android:name
-		ADDED from D:\AndroidStudioProjects\Munchkin\app\src\main\AndroidManifest.xml:25:19-77
-activity#com.example.munchkin.CreatingServiceActivity
-ADDED from D:\AndroidStudioProjects\Munchkin\app\src\main\AndroidManifest.xml:26:9-125
+		ADDED from D:\AndroidStudioProjects\Munchkin\app\src\main\AndroidManifest.xml:25:19-92
+activity#com.example.munchkin.creatingservice.CreatingServiceActivity
+ADDED from D:\AndroidStudioProjects\Munchkin\app\src\main\AndroidManifest.xml:26:9-141
 	android:screenOrientation
-		ADDED from D:\AndroidStudioProjects\Munchkin\app\src\main\AndroidManifest.xml:26:80-123
+		ADDED from D:\AndroidStudioProjects\Munchkin\app\src\main\AndroidManifest.xml:26:96-139
 	android:name
-		ADDED from D:\AndroidStudioProjects\Munchkin\app\src\main\AndroidManifest.xml:26:19-78
+		ADDED from D:\AndroidStudioProjects\Munchkin\app\src\main\AndroidManifest.xml:26:19-94
 activity#com.example.munchkin.MainActivity
 ADDED from D:\AndroidStudioProjects\Munchkin\app\src\main\AndroidManifest.xml:27:9-33:20
 	android:screenOrientation
