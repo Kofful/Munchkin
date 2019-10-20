@@ -7,4 +7,7 @@ public class FindingServicePresenter {
         this.activity = activity;
         model = new FindingServiceModel();
     }
+    public void onBackPressed() {
+        model.disconnect();
+    }
 }

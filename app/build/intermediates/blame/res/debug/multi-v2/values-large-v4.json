@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\AndroidStudioProjects\\Munchkin\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-large-v4\\values-large-v4.xml",
+            "outputFile": "C:\\Users\\10113\\AndroidStudioProjects\\Munchkin\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-large-v4\\values-large-v4.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Vladislav\\.gradle\\caches\\transforms-2\\files-2.1\\592f2466be9f8f65f835be899b816025\\res\\values-large-v4\\values-large-v4.xml",
+                    "source": "C:\\Users\\10113\\.gradle\\caches\\transforms-2\\files-2.1\\98d4985025bb1b9e448b60ef943e1ccb\\res\\values-large-v4\\values-large-v4.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10",
                         "startColumns": "4,4,4,4,4,4,4,4,4",

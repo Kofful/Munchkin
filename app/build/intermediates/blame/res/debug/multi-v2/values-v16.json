@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\AndroidStudioProjects\\Munchkin\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v16\\values-v16.xml",
+            "outputFile": "C:\\Users\\10113\\AndroidStudioProjects\\Munchkin\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v16\\values-v16.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Vladislav\\.gradle\\caches\\transforms-2\\files-2.1\\592f2466be9f8f65f835be899b816025\\res\\values-v16\\values-v16.xml",
+                    "source": "C:\\Users\\10113\\.gradle\\caches\\transforms-2\\files-2.1\\98d4985025bb1b9e448b60ef943e1ccb\\res\\values-v16\\values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -23,7 +23,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Vladislav\\.gradle\\caches\\transforms-2\\files-2.1\\e225680a2c48f4b264aa58a0f203d271\\res\\values-v16\\values-v16.xml",
+                    "source": "C:\\Users\\10113\\.gradle\\caches\\transforms-2\\files-2.1\\adb49c71433799ea8d360295ccf071c2\\res\\values-v16\\values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

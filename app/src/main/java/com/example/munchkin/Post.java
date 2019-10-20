@@ -7,15 +7,9 @@ public class Post {
     @SerializedName("userId")
     @Expose
     private int userId;
-    @SerializedName("id")
+    @SerializedName("userName")
     @Expose
-    private int id;
-    @SerializedName("title")
-    @Expose
-    private String title;
-    @SerializedName("body")
-    @Expose
-    private String body;
+    private String userName;
 
     public int getUserId() {
         return userId;
@@ -25,27 +19,11 @@ public class Post {
         this.userId = userId;
     }
 
-    public int getId() {
-        return id;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getBody() {
-        return body;
-    }
-
-    public void setBody(String body) {
-        this.body = body;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 }

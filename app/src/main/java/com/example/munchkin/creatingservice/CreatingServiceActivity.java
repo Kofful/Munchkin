@@ -11,6 +11,7 @@ public class CreatingServiceActivity extends AppCompatActivity implements Creati
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+        presenter.onBackPressed();
     }
 
     @Override

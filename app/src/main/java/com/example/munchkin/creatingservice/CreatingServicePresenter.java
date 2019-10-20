@@ -5,6 +5,10 @@ public class CreatingServicePresenter {
     private int Id;
     public CreatingServicePresenter(CreatingServiceActivity activity) {
         this.activity = activity;
-        model = new CreatingServiceModel();
+        model = new CreatingServiceModel(activity.getIntent().getStringExtra("name"));
+    }
+
+    public void onBackPressed() {
+        model.disconnect();
     }
 }

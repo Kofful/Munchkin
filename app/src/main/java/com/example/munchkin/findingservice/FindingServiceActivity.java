@@ -4,18 +4,21 @@ import android.content.IntentFilter;
 import android.net.wifi.p2p.WifiP2pManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.example.munchkin.R;
+import com.example.munchkin.creatingservice.CreatingServicePresenter;
 
 public class FindingServiceActivity extends AppCompatActivity implements  FindingServiceView{
     TextView textView;
     LinearLayout servicesLayout;
     IntentFilter intentFilter;
-
+    FindingServicePresenter presenter;
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+        presenter.onBackPressed();
     }
 
     @Override
@@ -24,6 +27,7 @@ public class FindingServiceActivity extends AppCompatActivity implements  Findin
         setContentView(R.layout.activity_finding_service);
         servicesLayout = findViewById(R.id.servicesLayout);
         textView = findViewById(R.id.findView);
+        presenter = new FindingServicePresenter(this);
 
         intentFilter = new IntentFilter();
         intentFilter.addAction(WifiP2pManager.WIFI_P2P_STATE_CHANGED_ACTION);
@@ -33,8 +37,10 @@ public class FindingServiceActivity extends AppCompatActivity implements  Findin
     }
 
     @Override
-    public void addService() {
-
+    public void addService(String value) {
+        Button btn = new Button(this);
+        btn.setText(value);
+        servicesLayout.addView(btn);
     }
 
     @Override

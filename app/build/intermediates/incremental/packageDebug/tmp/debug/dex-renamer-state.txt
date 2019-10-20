@@ -1,4 +1,4 @@
-#Sat Oct 19 20:21:56 EEST 2019
-base.0=D\:\\AndroidStudioProjects\\Munchkin\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
+#Sun Oct 20 13:32:33 EEST 2019
+base.0=C\:\\Users\\10113\\AndroidStudioProjects\\Munchkin\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
 path.0=classes.dex
 renamed.0=classes.dex
