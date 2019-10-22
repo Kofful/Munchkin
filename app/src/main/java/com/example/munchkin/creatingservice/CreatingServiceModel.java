@@ -4,7 +4,7 @@ import android.support.annotation.NonNull;
 import android.util.Log;
 
 import com.example.munchkin.NetworkService;
-import com.example.munchkin.Post;
+import com.example.munchkin.responses.Post;
 
 import retrofit2.Call;
 import retrofit2.Callback;

@@ -6,9 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.example.munchkin.R;
-import com.example.munchkin.creatingservice.CreatingServicePresenter;
 
 public class FindingServiceActivity extends AppCompatActivity implements  FindingServiceView{
     TextView textView;
@@ -40,6 +40,7 @@ public class FindingServiceActivity extends AppCompatActivity implements  Findin
     public void addService(String value) {
         Button btn = new Button(this);
         btn.setText(value);
+        btn.setLayoutParams(new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT));
         servicesLayout.addView(btn);
     }
 

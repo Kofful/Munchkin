@@ -1,15 +1,20 @@
-package com.example.munchkin;
+package com.example.munchkin.responses;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Post {
+import java.util.ArrayList;
+
+public class Offers {
     @SerializedName("userId")
     @Expose
     private int userId;
     @SerializedName("userName")
     @Expose
     private String userName;
+    @SerializedName("offers")
+    @Expose
+    public ArrayList<String> offers;
 
     public int getUserId() {
         return userId;
