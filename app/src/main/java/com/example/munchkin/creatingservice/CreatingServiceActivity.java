@@ -1,11 +1,11 @@
 package com.example.munchkin.creatingservice;
 
-import android.support.v7.app.AppCompatActivity;
+import android.app.Activity;
 import android.os.Bundle;
 import android.widget.TextView;
 import com.example.munchkin.R;
 
-public class CreatingServiceActivity extends AppCompatActivity implements CreatingServiceView{
+public class CreatingServiceActivity extends Activity implements CreatingServiceView{
     private TextView textView;
     private CreatingServicePresenter presenter;
     @Override

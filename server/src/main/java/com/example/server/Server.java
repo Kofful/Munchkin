@@ -10,10 +10,9 @@ import com.sun.net.httpserver.HttpServer;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.InetSocketAddress;
-import java.net.URLDecoder;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.HashMap;
+import java.util.Scanner;
 
 public class Server {
     private static ArrayList<String> offers = new ArrayList<>();
@@ -34,11 +33,25 @@ public class Server {
         String[] pairs = query.split("&");
         for (String pair : pairs) {
             String[] data = pair.split("=");
-            if(data[0].equals("userName")) {
+            if (data[0].equals("userName")) {
                 userName = data[1];
             }
         }
         return userName;
+    }
+
+    public static HashMap<String, String> parsePost(String query) {
+        HashMap<String, String> map = new HashMap<>();
+        String[] pairs = query.replaceAll("[}{\"]", "").split(",");
+        String key;
+        String value;
+        for (int i = 0; i < pairs.length; i++) {
+            String[] strs = pairs[i].split(":");
+            key = strs[0];
+            value = strs[1];
+            map.put(key, value);
+        }
+        return map;
     }
 
     static class EchoHandler implements HttpHandler {
@@ -55,13 +68,43 @@ public class Server {
                     break;
                 case "/disconnect":
                     disconnect(exchange);
+                    break;
+                case "/register":
+                    registerUser(exchange);
+                    break;
+                case "/login":
+                    checkUser(exchange);
             }
+        }
+
+        private void registerUser(HttpExchange exchange) throws IOException {
+            Scanner scanner = new Scanner(exchange.getRequestBody());
+            String str = scanner.next();
+            try {
+                HashMap<String, String> data = parsePost(str);
+            } catch(Exception ex) {
+
+            }
+            //TODO registration
+        }
+
+
+        private void checkUser(HttpExchange exchange) throws IOException {
+            Scanner scanner = new Scanner(exchange.getRequestBody());
+            String str = scanner.next();
+            try {
+                HashMap<String, String> data = parsePost(str);
+            } catch(Exception ex) {
+
+            }
+
+            //TODO login
         }
 
         private void createOffer(HttpExchange exchange) throws IOException {
             StringBuilder builder = new StringBuilder();
             String userName = parseQuery(exchange.getRequestURI().getQuery());
-            builder.append("{ userId: '1', userName: '" + userName+ "'}");
+            builder.append("{ userId: '1', userName: '" + userName + "'}");
             byte[] bytes = builder.toString().getBytes();
             exchange.sendResponseHeaders(200, bytes.length);
             offers.add(userName);
@@ -74,8 +117,8 @@ public class Server {
         private void findOffer(HttpExchange exchange) throws IOException {
             StringBuilder builder = new StringBuilder();
             String userName = parseQuery(exchange.getRequestURI().getQuery());
-            builder.append("{ userId: '1', userName: '" + userName+ "', offers: [");
-            for(String offer: offers) {
+            builder.append("{ userId: '1', userName: '" + userName + "', offers: [");
+            for (String offer : offers) {
                 builder.append('\'' + offer + "',");
             }
             builder.append("]}");
@@ -89,8 +132,8 @@ public class Server {
         }
 
         private void disconnect(HttpExchange exchange) {
-            for(String offer : offers) {
-                if(offer.equals(parseQuery(exchange.getRequestURI().getQuery()))) {
+            for (String offer : offers) {
+                if (offer.equals(parseQuery(exchange.getRequestURI().getQuery()))) {
                     offers.remove(offer);
                 }
             }

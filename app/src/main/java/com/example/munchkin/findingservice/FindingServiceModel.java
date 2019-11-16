@@ -2,9 +2,8 @@ package com.example.munchkin.findingservice;
 
 import android.annotation.SuppressLint;
 import android.os.AsyncTask;
-import android.provider.ContactsContract;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+
+import androidx.annotation.NonNull;
 import android.util.Log;
 
 import com.example.munchkin.NetworkService;
@@ -35,7 +34,7 @@ public class FindingServiceModel {
                             .find("name")
                             .execute().body();
                 } catch(Exception ex) {
-                    Log.i("DEBUGGING", ex.getMessage());
+                    Log.i("DEBUGGING", ex.getLocalizedMessage());
                 }
                 return offers;
             }
@@ -44,7 +43,7 @@ public class FindingServiceModel {
             posts = asyncTask.execute().get().offers;
             posts.remove(posts.size() - 1);
         } catch (Exception ex) {
-            Log.i("DEBUGGING", "IDIOT!");
+            Log.i("DEBUGGING", "IDIOT!" + ex.getMessage());
         }
         return posts;
     }

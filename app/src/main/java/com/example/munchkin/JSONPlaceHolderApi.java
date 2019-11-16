@@ -1,10 +1,13 @@
 package com.example.munchkin;
 
+
 import com.example.munchkin.responses.Offers;
 import com.example.munchkin.responses.Post;
 
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Query;
 
 public interface JSONPlaceHolderApi {
@@ -14,4 +17,8 @@ public interface JSONPlaceHolderApi {
     public Call<Post> create(@Query("userName") String userName);
     @GET("/offers/find")
     public Call<Offers> find(@Query("userName") String userName);
+    @POST("/register")
+    public Call<User> register(@Body User user);
+    @POST("/login")
+    public Call<User> login(@Body User user);
 }
