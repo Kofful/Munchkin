@@ -6,6 +6,9 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 
 public class User implements Serializable {
+    @SerializedName("answer")
+    @Expose
+    private int answer;
     @SerializedName("userId")
     @Expose
     private int userId;
@@ -23,11 +26,13 @@ public class User implements Serializable {
         setNickname(nickname);
         setEmail(email);
         setPassword(password);
+        setUserId(0);
     }
 
     public User(String email, String password) {
         setEmail(email);
         setPassword(password);
+        setUserId(0);
     }
 
     public int getUserId() {
@@ -71,5 +76,13 @@ public class User implements Serializable {
         sb+="\"nickname\":\"" + getNickname() +"\",";
         sb+="\"passwordHash\":\"" + getUserId() +"\"}";
         return sb;
+    }
+
+    public int getAnswer() {
+        return answer;
+    }
+
+    public void setAnswer(int answer) {
+        this.answer = answer;
     }
 }

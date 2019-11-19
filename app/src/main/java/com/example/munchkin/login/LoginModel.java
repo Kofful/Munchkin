@@ -16,28 +16,39 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class LoginModel {
+    User user;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public int login(String email, String password) {
         try {
             MessageDigest digest = MessageDigest.getInstance("SHA-256");
             byte[] hash = digest.digest(password.getBytes(StandardCharsets.UTF_8));
             String strHash = String.format("%064x", new BigInteger(1, hash));
-            NetworkService.getInstance()
-                    .getJSONApi()
-                    .login(new User(email, strHash))
-                    .enqueue(new Callback<User>() {
-                        @Override
-                        public void onResponse(@NonNull Call<User> call, @NonNull Response<User> response) {
-
-                        }
-
-                        @Override
-                        public void onFailure(@NonNull Call<User> call, @NonNull Throwable t) {
-
-                        }
-                    });
+            Thread thread = new Thread() {
+                @Override
+                public void run() {
+                    try {
+                        setUser(NetworkService.getInstance()
+                                .getJSONApi()
+                                .login(new User(email, strHash))
+                                .execute().body());
+                    } catch (Exception ex) {
+                        Log.i("DEBUGGING", ex.getMessage());
+                    }
+                }
+            };
+            thread.start();
+            thread.join();
+            return user.getAnswer();
         } catch(Exception ex){
-            Log.i("DEBUGGING", ex.getClass().toString());
+            Log.i("DEBUGGING", ex.getMessage());
         }
         return 0;
     }

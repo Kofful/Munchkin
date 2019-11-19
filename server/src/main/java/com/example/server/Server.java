@@ -10,9 +10,14 @@ import com.sun.net.httpserver.HttpServer;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.InetSocketAddress;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
+
 
 public class Server {
     private static ArrayList<String> offers = new ArrayList<>();
@@ -54,6 +59,18 @@ public class Server {
         return map;
     }
 
+    public static void sendResponse(String response, HttpExchange exchange) {
+        try {
+            byte[] bytes = response.getBytes();
+            exchange.sendResponseHeaders(200, bytes.length);
+            OutputStream os = exchange.getResponseBody();
+            os.write(bytes);
+            os.close();
+        } catch (Exception ex) {
+
+        }
+    }
+
     static class EchoHandler implements HttpHandler {
         @Override
         public void handle(HttpExchange exchange) throws IOException {
@@ -82,10 +99,38 @@ public class Server {
             String str = scanner.next();
             try {
                 HashMap<String, String> data = parsePost(str);
-            } catch(Exception ex) {
 
+                Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/munchkindb?useUnicode=true&serverTimezone=UTC", "root", "");
+                Statement statement = con.createStatement();
+                ResultSet result = statement.executeQuery("select id from `users` where nickname ='"
+                        + data.get("nickname") + "'");
+                if (result.next()) {
+                    sendResponse("{\"answer\":\"111\"}", exchange);
+                    return;
+                }
+
+                result = statement.executeQuery("select id from `users` where email ='"
+                        + data.get("email") + "'");
+                if (result.next()) {
+                    sendResponse("{\"answer\":\"112\"}", exchange);
+                    return;
+                }
+
+                statement.execute("insert into `users` (nickname, password, email) value ('"
+                        + data.get("nickname") + "', '"
+                        + data.get("passwordHash") + "', '"
+                        + data.get("email") + "')");
+                result = statement.executeQuery("select id from `users` where nickname = '" + data.get("nickname")+"'");
+                result.next();
+                String response = "{ \"userId\": \"" + result.getInt("id")
+                        + "\", \"passwordHash\" : \"" + data.get("passwordHash")
+                        + "\", \"nickname\": \"" + data.get("nickname")
+                        + "\", \"email\": \"" + data.get("email") + "\"}";
+                sendResponse(response, exchange);
+            } catch (Exception ex) {
+                System.out.println(ex.getMessage());
             }
-            //TODO registration
         }
 
 
@@ -94,7 +139,30 @@ public class Server {
             String str = scanner.next();
             try {
                 HashMap<String, String> data = parsePost(str);
-            } catch(Exception ex) {
+                Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/munchkindb?useUnicode=true&serverTimezone=UTC", "root", "");
+                Statement statement = con.createStatement();
+                ResultSet result = statement.executeQuery("select id from `users` where email ='"
+                        + data.get("email") + "'");
+                if (!result.next()) {
+                    sendResponse("{\"answer\":\"211\"}", exchange);
+                    return;
+                }
+                result = statement.executeQuery("select id from `users` where password ='"
+                        + data.get("passwordHash") + "'");
+                if (!result.next()) {
+                    sendResponse("{\"answer\":\"212\"}", exchange);
+                    return;
+                }
+
+                result = statement.executeQuery("select * from `users` where email = '" + data.get("email")+"'");
+                result.next();
+                String response = "{ \"userId\": \"" + result.getInt("id")
+                        + "\", \"nickname\": \"" + result.getString("nickname")
+                        + "\", \"passwordHash\" : \"" + data.get("passwordHash")
+                        + "\", \"email\": \"" + data.get("email") + "\"}";
+                sendResponse(response, exchange);
+            } catch (Exception ex) {
 
             }
 

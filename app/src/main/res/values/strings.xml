@@ -5,4 +5,8 @@
     <string name="wrongNickNameLength">Nickname length must be from 3 to 20 symbols</string>
     <string name="wrongEmailAddress">Email address is wrong</string>
     <string name="wrongPasswordLength">Password length must be longer than 6 symbols</string>
+    <string name="thisNickNameExists">This nickname already exists</string>
+    <string name="thisEmailExists">This email already exists</string>
+    <string name="incorrectEmail">Incorrect email</string>
+    <string name="incorrectPassword">Incorrect password</string>
 </resources>

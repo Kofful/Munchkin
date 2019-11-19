@@ -6,13 +6,9 @@ import android.content.Intent;
 import com.example.munchkin.R;
 import com.example.munchkin.User;
 import com.example.munchkin.main.MainActivity;
-import com.example.munchkin.main.MainModel;
 
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
-import java.math.BigInteger;
-import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
 
 public class RegisterPresenter {
     private RegisterActivity activity;
@@ -27,8 +23,11 @@ public class RegisterPresenter {
                 try {
                     FileOutputStream outputStream = activity.getApplicationContext().openFileOutput("logindata", Context.MODE_PRIVATE);
                     ObjectOutputStream objectOutputStream =  new ObjectOutputStream(outputStream);
-                    User data = new User(email, password, nickname);
+                    User data = model.getUser();
+                    data.setPassword(password);
                     objectOutputStream.writeObject(data);
+                    objectOutputStream.close();
+                    outputStream.close();
                     Intent intent = new Intent(activity, MainActivity.class);
                     intent.putExtra("email", data.getEmail());
                     intent.putExtra("nickname", data.getNickname());
@@ -45,6 +44,12 @@ public class RegisterPresenter {
                 break;
             case 103:
                 activity.showMessage(activity.getResources().getString(R.string.wrongPasswordLength));
+                break;
+            case 111:
+                activity.showMessage(activity.getResources().getString(R.string.thisNickNameExists));
+                break;
+            case 112:
+                activity.showMessage(activity.getResources().getString(R.string.thisEmailExists));
                 break;
         }
     }
