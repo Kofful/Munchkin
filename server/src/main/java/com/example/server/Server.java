@@ -8,8 +8,10 @@ import com.sun.net.httpserver.HttpPrincipal;
 import com.sun.net.httpserver.HttpServer;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.InetSocketAddress;
+import java.nio.charset.StandardCharsets;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -30,7 +32,7 @@ public class Server {
 
         server.setExecutor(null);
         server.start();
-        System.out.println("Server started on port 8765");
+        System.out.println("HTTP Server started on port 8765");
     }
 
     public static String parseQuery(String query) {
@@ -47,7 +49,7 @@ public class Server {
 
     public static HashMap<String, String> parsePost(String query) {
         HashMap<String, String> map = new HashMap<>();
-        String[] pairs = query.replaceAll("[}{\"]", "").split(",");
+        String[] pairs = query.replaceAll("[}{\"\\s]", "").split(",");
         String key;
         String value;
         for (int i = 0; i < pairs.length; i++) {
@@ -95,8 +97,10 @@ public class Server {
         }
 
         private void registerUser(HttpExchange exchange) throws IOException {
-            Scanner scanner = new Scanner(exchange.getRequestBody());
-            String str = scanner.next();
+            InputStream scanner = exchange.getRequestBody();
+            byte[] array = new byte[scanner.available()];
+            scanner.read(array);
+            String str = new String(array, StandardCharsets.UTF_8);
             try {
                 HashMap<String, String> data = parsePost(str);
 
@@ -121,12 +125,13 @@ public class Server {
                         + data.get("nickname") + "', '"
                         + data.get("passwordHash") + "', '"
                         + data.get("email") + "')");
-                result = statement.executeQuery("select id from `users` where nickname = '" + data.get("nickname")+"'");
+                result = statement.executeQuery("select id from `users` where nickname = '" + data.get("nickname") + "'");
                 result.next();
                 String response = "{ \"userId\": \"" + result.getInt("id")
                         + "\", \"passwordHash\" : \"" + data.get("passwordHash")
                         + "\", \"nickname\": \"" + data.get("nickname")
-                        + "\", \"email\": \"" + data.get("email") + "\"}";
+                        + "\", \"email\": \"" + data.get("email")
+                        + "\", \"friends\": []}";
                 sendResponse(response, exchange);
             } catch (Exception ex) {
                 System.out.println(ex.getMessage());
@@ -135,8 +140,10 @@ public class Server {
 
 
         private void checkUser(HttpExchange exchange) throws IOException {
-            Scanner scanner = new Scanner(exchange.getRequestBody());
-            String str = scanner.next();
+            InputStream scanner = exchange.getRequestBody();
+            byte[] array = new byte[scanner.available()];
+            scanner.read(array);
+            String str = new String(array, StandardCharsets.UTF_8);
             try {
                 HashMap<String, String> data = parsePost(str);
                 Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
@@ -148,25 +155,50 @@ public class Server {
                     sendResponse("{\"answer\":\"211\"}", exchange);
                     return;
                 }
-                result = statement.executeQuery("select id from `users` where password ='"
+                result = statement.executeQuery("select * from `users` where password ='"
                         + data.get("passwordHash") + "'");
                 if (!result.next()) {
                     sendResponse("{\"answer\":\"212\"}", exchange);
                     return;
                 }
-
-                result = statement.executeQuery("select * from `users` where email = '" + data.get("email")+"'");
-                result.next();
-                String response = "{ \"userId\": \"" + result.getInt("id")
-                        + "\", \"nickname\": \"" + result.getString("nickname")
+                int userId = result.getInt("id");
+                String userNickname = result.getString("nickname");
+                result = statement.executeQuery("select * from `friends` where firstId = " + userId
+                        + " or secondId = " + userId);
+                ArrayList<String> friends = new ArrayList<>();
+                while (result.next()) {
+                    if (result.getInt("firstId") == userId) {
+                        result = statement.executeQuery("select * from `users` where id = " + result.getInt("secondId"));
+                    } else {
+                        result = statement.executeQuery("select * from `users` where id = " + result.getInt("firstId"));
+                    }
+                    friends.add(result.getString("nickname"));
+                }
+                ArrayList<String> subscribers = new ArrayList<>();
+                result = statement.executeQuery("select * from `subscribers` where objectId = " + userId);
+                while (result.next()) {
+                    result = statement.executeQuery("select * from `users` where id = " + result.getInt("subscriberId"));
+                    subscribers.add(result.getString("nickname"));
+                }
+                String response = "{ \"userId\": \"" + userId
+                        + "\", \"nickname\": \"" + userNickname
                         + "\", \"passwordHash\" : \"" + data.get("passwordHash")
-                        + "\", \"email\": \"" + data.get("email") + "\"}";
+                        + "\", \"email\": \"" + data.get("email")
+                        + "\", \"friends\": [";
+                for(String friendName: friends) {
+                    response += "{\"nickname\":\"" + friendName + "\"},";
+                }
+                response += "], \"subscribers\":[";
+                for(String subscriberName: subscribers) {
+                    response += "{\"nickname\":\"" + subscriberName + "\"},";
+                }
+                response += "]}";
                 sendResponse(response, exchange);
             } catch (Exception ex) {
-
+                System.out.println(ex.getMessage());
+                ex.printStackTrace();
             }
 
-            //TODO login
         }
 
         private void createOffer(HttpExchange exchange) throws IOException {

@@ -4,6 +4,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class User implements Serializable {
     @SerializedName("answer")
@@ -21,6 +22,9 @@ public class User implements Serializable {
     @SerializedName("passwordHash")
     @Expose
     private String password;
+    @SerializedName("friends")
+    @Expose
+    private ArrayList<User> friends;
 
     public User(String email, String password, String nickname) {
         setNickname(nickname);
@@ -67,16 +71,6 @@ public class User implements Serializable {
     public void setPassword(String password) {
         this.password = password;
     }
-    
-    public String toJSON() {
-        String sb = "";
-        sb+="{";
-        sb+="\"userId\":\"" + getUserId() +"\",";
-        sb+="\"email\":\"" + getEmail() +"\",";
-        sb+="\"nickname\":\"" + getNickname() +"\",";
-        sb+="\"passwordHash\":\"" + getUserId() +"\"}";
-        return sb;
-    }
 
     public int getAnswer() {
         return answer;
@@ -84,5 +78,13 @@ public class User implements Serializable {
 
     public void setAnswer(int answer) {
         this.answer = answer;
+    }
+
+    public ArrayList<User> getFriends() {
+        return friends;
+    }
+
+    public void addFriend(ArrayList<User> friends) {
+        this.friends = friends;
     }
 }

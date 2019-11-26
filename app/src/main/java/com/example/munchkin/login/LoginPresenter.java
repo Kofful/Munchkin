@@ -1,6 +1,8 @@
 package com.example.munchkin.login;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.util.Log;
 
@@ -23,12 +25,32 @@ public class LoginPresenter {
             FileInputStream inputStream = activity.getApplicationContext().openFileInput("logindata");
             ObjectInputStream objectStream = new ObjectInputStream(inputStream);
             User data = (User)objectStream.readObject();
-            if(model.login(data.getEmail(), data.getPassword()) == 0 ) {
+            int answer = model.login(data.getEmail(), data.getPassword());
+            if(answer == 0 ) {//success
                 Intent intent = new Intent(activity, MainActivity.class);
+                intent.putExtra("user", data);//TODO change if it needable
+//                intent.putExtra("userId", data.getUserId());
+//                intent.putExtra("nickname", data.getNickname());
+//                intent.putExtra("friends", data.getFriends());
                 activity.startActivity(intent);
+            } else if(answer == -1) {//no connection
+                    AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+                    builder.setTitle(activity.getResources().getString(R.string.noConnection))
+                            .setCancelable(false)
+                            .setNegativeButton("ОК",
+                                    new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int id) {
+                                            activity.finish();
+                                        }
+                                    });
+                    AlertDialog alert = builder.create();
+                    alert.show();
+            } else {//incorrect login data
+                activity.setContentView(R.layout.activity_login);
             }
         } catch(Exception ex) {
             Log.i("DEBUGGING", ex.getMessage());
+            activity.setContentView(R.layout.activity_login);
         }
     }
     public void login(String email, String password) {
@@ -43,8 +65,7 @@ public class LoginPresenter {
                     objectOutputStream.close();
                     outputStream.close();
                     Intent intent = new Intent(activity, MainActivity.class);
-                    intent.putExtra("email", data.getEmail());
-                    intent.putExtra("nickname", data.getNickname());
+                    intent.putExtra("user", data);
                     activity.startActivity(intent);
                 } catch(Exception ex) {
                     Log.i("DEBUGGING", ex.getMessage());

@@ -50,6 +50,6 @@ public class LoginModel {
         } catch(Exception ex){
             Log.i("DEBUGGING", ex.getMessage());
         }
-        return 0;
+        return -1;
     }
 }

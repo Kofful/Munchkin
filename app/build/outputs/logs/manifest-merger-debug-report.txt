@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from D:\AndroidStudioProjects\Munchkin\app\src\main\AndroidManifest.xml:2:1-47:12
-INJECTED from D:\AndroidStudioProjects\Munchkin\app\src\main\AndroidManifest.xml:2:1-47:12
-INJECTED from D:\AndroidStudioProjects\Munchkin\app\src\main\AndroidManifest.xml:2:1-47:12
-INJECTED from D:\AndroidStudioProjects\Munchkin\app\src\main\AndroidManifest.xml:2:1-47:12
+ADDED from D:\AndroidStudioProjects\Munchkin\app\src\main\AndroidManifest.xml:2:1-48:12
+INJECTED from D:\AndroidStudioProjects\Munchkin\app\src\main\AndroidManifest.xml:2:1-48:12
+INJECTED from D:\AndroidStudioProjects\Munchkin\app\src\main\AndroidManifest.xml:2:1-48:12
+INJECTED from D:\AndroidStudioProjects\Munchkin\app\src\main\AndroidManifest.xml:2:1-48:12
 MERGED from [com.android.support:design:28.0.0] C:\Users\Vladislav\.gradle\caches\transforms-2\files-2.1\24e2d70306567f2046fa8aebc218080f\AndroidManifest.xml:17:1-24:12
 MERGED from [com.android.support:appcompat-v7:28.0.0] C:\Users\Vladislav\.gradle\caches\transforms-2\files-2.1\592f2466be9f8f65f835be899b816025\AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\Vladislav\.gradle\caches\transforms-2\files-2.1\4f2237eae743828c860169260c66a034\AndroidManifest.xml:2:1-11:12
@@ -35,22 +35,22 @@ MERGED from [android.arch.lifecycle:viewmodel:1.1.1] C:\Users\Vladislav\.gradle\
 MERGED from [android.arch.lifecycle:livedata:1.1.1] C:\Users\Vladislav\.gradle\caches\transforms-2\files-2.1\1fdce4a8db36c390419c65a12673cec8\AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.lifecycle:livedata-core:1.1.1] C:\Users\Vladislav\.gradle\caches\transforms-2\files-2.1\d81417b86bbe98035b1b4ed298d9030f\AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.core:runtime:1.1.1] C:\Users\Vladislav\.gradle\caches\transforms-2\files-2.1\092558544df7f9cc1cb972a8d165ef2d\AndroidManifest.xml:17:1-22:12
-INJECTED from D:\AndroidStudioProjects\Munchkin\app\src\main\AndroidManifest.xml:2:1-47:12
-INJECTED from D:\AndroidStudioProjects\Munchkin\app\src\main\AndroidManifest.xml:2:1-47:12
-INJECTED from D:\AndroidStudioProjects\Munchkin\app\src\main\AndroidManifest.xml:2:1-47:12
+INJECTED from D:\AndroidStudioProjects\Munchkin\app\src\main\AndroidManifest.xml:2:1-48:12
+INJECTED from D:\AndroidStudioProjects\Munchkin\app\src\main\AndroidManifest.xml:2:1-48:12
+INJECTED from D:\AndroidStudioProjects\Munchkin\app\src\main\AndroidManifest.xml:2:1-48:12
 	package
 		ADDED from D:\AndroidStudioProjects\Munchkin\app\src\main\AndroidManifest.xml:4:5-35
 		INJECTED from D:\AndroidStudioProjects\Munchkin\app\src\main\AndroidManifest.xml
 		INJECTED from D:\AndroidStudioProjects\Munchkin\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from D:\AndroidStudioProjects\Munchkin\app\src\main\AndroidManifest.xml
-		ADDED from D:\AndroidStudioProjects\Munchkin\app\src\main\AndroidManifest.xml:2:1-47:12
+		ADDED from D:\AndroidStudioProjects\Munchkin\app\src\main\AndroidManifest.xml:2:1-48:12
 		INJECTED from D:\AndroidStudioProjects\Munchkin\app\src\main\AndroidManifest.xml
 	xmlns:tools
 		ADDED from D:\AndroidStudioProjects\Munchkin\app\src\main\AndroidManifest.xml:3:5-51
 	android:versionCode
 		INJECTED from D:\AndroidStudioProjects\Munchkin\app\src\main\AndroidManifest.xml
-		ADDED from D:\AndroidStudioProjects\Munchkin\app\src\main\AndroidManifest.xml:2:1-47:12
+		ADDED from D:\AndroidStudioProjects\Munchkin\app\src\main\AndroidManifest.xml:2:1-48:12
 		INJECTED from D:\AndroidStudioProjects\Munchkin\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from D:\AndroidStudioProjects\Munchkin\app\src\main\AndroidManifest.xml:2:11-69
@@ -79,7 +79,7 @@ ADDED from D:\AndroidStudioProjects\Munchkin\app\src\main\AndroidManifest.xml:15
 	android:name
 		ADDED from D:\AndroidStudioProjects\Munchkin\app\src\main\AndroidManifest.xml:16:9-51
 application
-ADDED from D:\AndroidStudioProjects\Munchkin\app\src\main\AndroidManifest.xml:19:5-45:19
+ADDED from D:\AndroidStudioProjects\Munchkin\app\src\main\AndroidManifest.xml:19:5-46:19
 MERGED from [com.android.support:design:28.0.0] C:\Users\Vladislav\.gradle\caches\transforms-2\files-2.1\24e2d70306567f2046fa8aebc218080f\AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:design:28.0.0] C:\Users\Vladislav\.gradle\caches\transforms-2\files-2.1\24e2d70306567f2046fa8aebc218080f\AndroidManifest.xml:22:5-20
 MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\Vladislav\.gradle\caches\transforms-2\files-2.1\4f2237eae743828c860169260c66a034\AndroidManifest.xml:9:5-20
@@ -137,9 +137,11 @@ ADDED from D:\AndroidStudioProjects\Munchkin\app\src\main\AndroidManifest.xml:38
 	android:name
 		ADDED from D:\AndroidStudioProjects\Munchkin\app\src\main\AndroidManifest.xml:39:13-68
 activity#com.example.munchkin.main.MainActivity
-ADDED from D:\AndroidStudioProjects\Munchkin\app\src\main\AndroidManifest.xml:41:9-44:20
+ADDED from D:\AndroidStudioProjects\Munchkin\app\src\main\AndroidManifest.xml:41:9-45:20
 	android:screenOrientation
 		ADDED from D:\AndroidStudioProjects\Munchkin\app\src\main\AndroidManifest.xml:43:13-56
+	android:theme
+		ADDED from D:\AndroidStudioProjects\Munchkin\app\src\main\AndroidManifest.xml:44:13-52
 	android:name
 		ADDED from D:\AndroidStudioProjects\Munchkin\app\src\main\AndroidManifest.xml:42:13-46
 uses-sdk

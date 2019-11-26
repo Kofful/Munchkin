@@ -9,4 +9,5 @@
     <string name="thisEmailExists">This email already exists</string>
     <string name="incorrectEmail">Incorrect email</string>
     <string name="incorrectPassword">Incorrect password</string>
+    <string name="noConnection">No connection</string>
 </resources>

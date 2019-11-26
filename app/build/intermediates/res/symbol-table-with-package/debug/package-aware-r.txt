@@ -15,6 +15,8 @@ anim design_bottom_sheet_slide_in
 anim design_bottom_sheet_slide_out
 anim design_snackbar_in
 anim design_snackbar_out
+anim enter_from_right
+anim exit_to_right
 animator design_appbar_state_list_animator
 animator design_fab_hide_motion_spec
 animator design_fab_show_motion_spec
@@ -1001,6 +1003,7 @@ drawable design_ic_visibility
 drawable design_ic_visibility_off
 drawable design_password_eye
 drawable design_snackbar_background
+drawable friends
 drawable ic_launcher_background
 drawable ic_launcher_foreground
 drawable ic_mtrl_chip_checked_black
@@ -1085,7 +1088,6 @@ id design_navigation_view
 id dimensions
 id direct
 id disableHome
-id editName
 id edit_query
 id end
 id enterAlways
@@ -1100,6 +1102,7 @@ id filled
 id findView
 id fixed
 id forever
+id friendListFrame
 id ghost_view
 id gone
 id group_divider
@@ -1299,6 +1302,8 @@ layout design_navigation_item_subheader
 layout design_navigation_menu
 layout design_navigation_menu_item
 layout design_text_input_password_icon
+layout fragment_friendlist
+layout fragment_friends_button
 layout mtrl_layout_snackbar
 layout mtrl_layout_snackbar_include
 layout notification_action
@@ -1366,6 +1371,7 @@ string hide_bottom_view_on_scroll_behavior
 string incorrectEmail
 string incorrectPassword
 string mtrl_chip_close_icon_content_description
+string noConnection
 string password_toggle_content_description
 string path_password_eye
 string path_password_eye_mask_strike_through
@@ -1874,6 +1880,8 @@ style Widget_MaterialComponents_TextInputLayout_OutlinedBox
 style Widget_MaterialComponents_TextInputLayout_OutlinedBox_Dense
 style Widget_MaterialComponents_Toolbar
 style Widget_Support_CoordinatorLayout
+style greyButton
+style noAnimationTheme
 styleable ActionBar background backgroundSplit backgroundStacked contentInsetEnd contentInsetEndWithActions contentInsetLeft contentInsetRight contentInsetStart contentInsetStartWithNavigation customNavigationLayout displayOptions divider elevation height hideOnContentScroll homeAsUpIndicator homeLayout icon indeterminateProgressStyle itemPadding logo navigationMode popupTheme progressBarPadding progressBarStyle subtitle subtitleTextStyle title titleTextStyle
 styleable ActionBarLayout android_layout_gravity
 styleable ActionMenuItemView android_minWidth

@@ -29,7 +29,7 @@ public class RegisterPresenter {
                     objectOutputStream.close();
                     outputStream.close();
                     Intent intent = new Intent(activity, MainActivity.class);
-                    intent.putExtra("email", data.getEmail());
+                    intent.putExtra("userId", data.getUserId());
                     intent.putExtra("nickname", data.getNickname());
                     activity.startActivity(intent);
                 } catch(Exception ex) {

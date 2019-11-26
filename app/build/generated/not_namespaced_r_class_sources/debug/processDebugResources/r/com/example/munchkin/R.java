@@ -25,6 +25,8 @@ public final class R {
     public static final int design_bottom_sheet_slide_out=0x7f01000d;
     public static final int design_snackbar_in=0x7f01000e;
     public static final int design_snackbar_out=0x7f01000f;
+    public static final int enter_from_right=0x7f010010;
+    public static final int exit_to_right=0x7f010011;
   }
   public static final class animator {
     public static final int design_appbar_state_list_animator=0x7f020000;
@@ -4644,28 +4646,29 @@ public final class R {
     public static final int design_ic_visibility_off=0x7f070060;
     public static final int design_password_eye=0x7f070061;
     public static final int design_snackbar_background=0x7f070062;
-    public static final int ic_launcher_background=0x7f070063;
-    public static final int ic_launcher_foreground=0x7f070064;
-    public static final int ic_mtrl_chip_checked_black=0x7f070065;
-    public static final int ic_mtrl_chip_checked_circle=0x7f070066;
-    public static final int ic_mtrl_chip_close_circle=0x7f070067;
-    public static final int mtrl_snackbar_background=0x7f070068;
-    public static final int mtrl_tabs_default_indicator=0x7f070069;
-    public static final int navigation_empty_icon=0x7f07006a;
-    public static final int notification_action_background=0x7f07006b;
-    public static final int notification_bg=0x7f07006c;
-    public static final int notification_bg_low=0x7f07006d;
-    public static final int notification_bg_low_normal=0x7f07006e;
-    public static final int notification_bg_low_pressed=0x7f07006f;
-    public static final int notification_bg_normal=0x7f070070;
-    public static final int notification_bg_normal_pressed=0x7f070071;
-    public static final int notification_icon_background=0x7f070072;
-    public static final int notification_template_icon_bg=0x7f070073;
-    public static final int notification_template_icon_low_bg=0x7f070074;
-    public static final int notification_tile_bg=0x7f070075;
-    public static final int notify_panel_notification_icon_bg=0x7f070076;
-    public static final int tooltip_frame_dark=0x7f070077;
-    public static final int tooltip_frame_light=0x7f070078;
+    public static final int friends=0x7f070063;
+    public static final int ic_launcher_background=0x7f070064;
+    public static final int ic_launcher_foreground=0x7f070065;
+    public static final int ic_mtrl_chip_checked_black=0x7f070066;
+    public static final int ic_mtrl_chip_checked_circle=0x7f070067;
+    public static final int ic_mtrl_chip_close_circle=0x7f070068;
+    public static final int mtrl_snackbar_background=0x7f070069;
+    public static final int mtrl_tabs_default_indicator=0x7f07006a;
+    public static final int navigation_empty_icon=0x7f07006b;
+    public static final int notification_action_background=0x7f07006c;
+    public static final int notification_bg=0x7f07006d;
+    public static final int notification_bg_low=0x7f07006e;
+    public static final int notification_bg_low_normal=0x7f07006f;
+    public static final int notification_bg_low_pressed=0x7f070070;
+    public static final int notification_bg_normal=0x7f070071;
+    public static final int notification_bg_normal_pressed=0x7f070072;
+    public static final int notification_icon_background=0x7f070073;
+    public static final int notification_template_icon_bg=0x7f070074;
+    public static final int notification_template_icon_low_bg=0x7f070075;
+    public static final int notification_tile_bg=0x7f070076;
+    public static final int notify_panel_notification_icon_bg=0x7f070077;
+    public static final int tooltip_frame_dark=0x7f070078;
+    public static final int tooltip_frame_light=0x7f070079;
   }
   public static final class id {
     public static final int ALT=0x7f080000;
@@ -4730,21 +4733,21 @@ public final class R {
     public static final int dimensions=0x7f08003b;
     public static final int direct=0x7f08003c;
     public static final int disableHome=0x7f08003d;
-    public static final int editName=0x7f08003e;
-    public static final int edit_query=0x7f08003f;
-    public static final int end=0x7f080040;
-    public static final int enterAlways=0x7f080041;
-    public static final int enterAlwaysCollapsed=0x7f080042;
-    public static final int exitUntilCollapsed=0x7f080043;
-    public static final int expand_activities_button=0x7f080044;
-    public static final int expanded_menu=0x7f080045;
-    public static final int fill=0x7f080046;
-    public static final int fill_horizontal=0x7f080047;
-    public static final int fill_vertical=0x7f080048;
-    public static final int filled=0x7f080049;
-    public static final int findView=0x7f08004a;
-    public static final int fixed=0x7f08004b;
-    public static final int forever=0x7f08004c;
+    public static final int edit_query=0x7f08003e;
+    public static final int end=0x7f08003f;
+    public static final int enterAlways=0x7f080040;
+    public static final int enterAlwaysCollapsed=0x7f080041;
+    public static final int exitUntilCollapsed=0x7f080042;
+    public static final int expand_activities_button=0x7f080043;
+    public static final int expanded_menu=0x7f080044;
+    public static final int fill=0x7f080045;
+    public static final int fill_horizontal=0x7f080046;
+    public static final int fill_vertical=0x7f080047;
+    public static final int filled=0x7f080048;
+    public static final int findView=0x7f080049;
+    public static final int fixed=0x7f08004a;
+    public static final int forever=0x7f08004b;
+    public static final int friendListFrame=0x7f08004c;
     public static final int ghost_view=0x7f08004d;
     public static final int gone=0x7f08004e;
     public static final int group_divider=0x7f08004f;
@@ -4950,18 +4953,20 @@ public final class R {
     public static final int design_navigation_menu=0x7f0b002c;
     public static final int design_navigation_menu_item=0x7f0b002d;
     public static final int design_text_input_password_icon=0x7f0b002e;
-    public static final int mtrl_layout_snackbar=0x7f0b002f;
-    public static final int mtrl_layout_snackbar_include=0x7f0b0030;
-    public static final int notification_action=0x7f0b0031;
-    public static final int notification_action_tombstone=0x7f0b0032;
-    public static final int notification_template_custom_big=0x7f0b0033;
-    public static final int notification_template_icon_group=0x7f0b0034;
-    public static final int notification_template_part_chronometer=0x7f0b0035;
-    public static final int notification_template_part_time=0x7f0b0036;
-    public static final int select_dialog_item_material=0x7f0b0037;
-    public static final int select_dialog_multichoice_material=0x7f0b0038;
-    public static final int select_dialog_singlechoice_material=0x7f0b0039;
-    public static final int support_simple_spinner_dropdown_item=0x7f0b003a;
+    public static final int fragment_friendlist=0x7f0b002f;
+    public static final int fragment_friends_button=0x7f0b0030;
+    public static final int mtrl_layout_snackbar=0x7f0b0031;
+    public static final int mtrl_layout_snackbar_include=0x7f0b0032;
+    public static final int notification_action=0x7f0b0033;
+    public static final int notification_action_tombstone=0x7f0b0034;
+    public static final int notification_template_custom_big=0x7f0b0035;
+    public static final int notification_template_icon_group=0x7f0b0036;
+    public static final int notification_template_part_chronometer=0x7f0b0037;
+    public static final int notification_template_part_time=0x7f0b0038;
+    public static final int select_dialog_item_material=0x7f0b0039;
+    public static final int select_dialog_multichoice_material=0x7f0b003a;
+    public static final int select_dialog_singlechoice_material=0x7f0b003b;
+    public static final int support_simple_spinner_dropdown_item=0x7f0b003c;
   }
   public static final class mipmap {
     public static final int ic_launcher=0x7f0c0000;
@@ -5021,18 +5026,19 @@ public final class R {
     public static final int incorrectEmail=0x7f0d0031;
     public static final int incorrectPassword=0x7f0d0032;
     public static final int mtrl_chip_close_icon_content_description=0x7f0d0033;
-    public static final int password_toggle_content_description=0x7f0d0034;
-    public static final int path_password_eye=0x7f0d0035;
-    public static final int path_password_eye_mask_strike_through=0x7f0d0036;
-    public static final int path_password_eye_mask_visible=0x7f0d0037;
-    public static final int path_password_strike_through=0x7f0d0038;
-    public static final int search_menu_title=0x7f0d0039;
-    public static final int status_bar_notification_info_overflow=0x7f0d003a;
-    public static final int thisEmailExists=0x7f0d003b;
-    public static final int thisNickNameExists=0x7f0d003c;
-    public static final int wrongEmailAddress=0x7f0d003d;
-    public static final int wrongNickNameLength=0x7f0d003e;
-    public static final int wrongPasswordLength=0x7f0d003f;
+    public static final int noConnection=0x7f0d0034;
+    public static final int password_toggle_content_description=0x7f0d0035;
+    public static final int path_password_eye=0x7f0d0036;
+    public static final int path_password_eye_mask_strike_through=0x7f0d0037;
+    public static final int path_password_eye_mask_visible=0x7f0d0038;
+    public static final int path_password_strike_through=0x7f0d0039;
+    public static final int search_menu_title=0x7f0d003a;
+    public static final int status_bar_notification_info_overflow=0x7f0d003b;
+    public static final int thisEmailExists=0x7f0d003c;
+    public static final int thisNickNameExists=0x7f0d003d;
+    public static final int wrongEmailAddress=0x7f0d003e;
+    public static final int wrongNickNameLength=0x7f0d003f;
+    public static final int wrongPasswordLength=0x7f0d0040;
   }
   public static final class style {
     public static final int AlertDialog_AppCompat=0x7f0e0000;
@@ -5531,6 +5537,8 @@ public final class R {
     public static final int Widget_MaterialComponents_TextInputLayout_OutlinedBox_Dense=0x7f0e01ed;
     public static final int Widget_MaterialComponents_Toolbar=0x7f0e01ee;
     public static final int Widget_Support_CoordinatorLayout=0x7f0e01ef;
+    public static final int greyButton=0x7f0e01f0;
+    public static final int noAnimationTheme=0x7f0e01f1;
   }
   public static final class styleable {
     /**
