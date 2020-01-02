@@ -22,14 +22,20 @@
             <Button
                 android:layout_width="150pt"
                 android:layout_height="30pt"
-                android:onClick="createService"
-                android:text="@string/createService" />
+                android:onClick="createLobby"
+                android:text="@string/createLobby" />
 
             <Button
                 android:layout_width="150pt"
                 android:layout_height="30pt"
-                android:onClick="discoverServices"
-                android:text="@string/discoverServices" />
+                android:onClick="findLobby"
+                android:text="@string/findLobby" />
+
+            <Button
+                android:layout_width="150pt"
+                android:layout_height="30pt"
+                android:onClick="playWithFriends"
+                android:text="@string/playWithFriends" />
         </LinearLayout>
         <FrameLayout android:layout_height="match_parent"
             android:layout_width="90pt"

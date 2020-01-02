@@ -1,12 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="20pt">
+    <LinearLayout
+        android:layout_width="45pt"
+        android:layout_height="wrap_content"
+        android:layout_toStartOf="@id/nickname"
+        android:id="@+id/friendContextMenu"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="20pt"
+            android:text="Remove"
+            android:onClick="removeFriend">
+        </TextView>
+    </LinearLayout>
     <TextView
         android:layout_width="match_parent"
+        android:maxWidth="60pt"
         android:layout_height="match_parent"
         android:gravity="center_vertical"
         android:layout_marginStart="3pt"
         android:textSize="20sp"
+        android:textColor="@android:color/darker_gray"
         android:id="@+id/nickname"/>
+
+    <ImageView
+        android:layout_width="4pt"
+        android:layout_height="4pt"
+        android:layout_centerVertical="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="5pt"
+        android:id="@+id/friend_online"/>
 </RelativeLayout>

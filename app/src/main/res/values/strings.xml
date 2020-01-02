@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">Munchkin</string>
-    <string name="createService">Create Service</string>
-    <string name="discoverServices">Discover Services</string>
+    <string name="createLobby">Create lobby</string>
+    <string name="findLobby">Find lobby</string>
+    <string name="playWithFriends">Play with friends</string>
     <string name="wrongNickNameLength">Nickname length must be from 3 to 20 symbols</string>
     <string name="wrongEmailAddress">Email address is wrong</string>
     <string name="wrongPasswordLength">Password length must be longer than 6 symbols</string>
@@ -10,4 +11,12 @@
     <string name="incorrectEmail">Incorrect email</string>
     <string name="incorrectPassword">Incorrect password</string>
     <string name="noConnection">No connection</string>
+    <string name="friends">Friends</string>
+    <string name="subscribers">Subscribers</string>
+    <string name="remove">Remove</string>
+    <string name="sendRequest">Send request</string>
+    <string name="accept">Accept</string>
+    <string name="deny">Deny</string>
+    <string name="forFriendsOnly">For friends only</string>
+    <string name="playersMax">Players</string>
 </resources>

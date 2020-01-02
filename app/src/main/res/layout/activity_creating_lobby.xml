@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".creatinglobby.CreatingLobbyActivity">
+
+    <TextView
+        android:id="@+id/textView_createLobby"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/createLobby"
+        android:textSize="30sp" />
+
+    <ImageButton
+        android:layout_width="30pt"
+        android:layout_height="20pt"
+        android:src="@drawable/chevronup"
+        android:layout_marginStart="20pt"
+        android:id="@+id/btn_increment"
+        android:contentDescription="@string/playersMax"
+        android:layout_marginTop="10pt"
+        android:layout_below="@id/textView_createLobby"
+        android:onClick="incrementPlayersCount"/>
+
+    <TextView
+        android:id="@+id/textView_playersMax"
+        android:layout_width="30pt"
+        android:layout_height="15pt"
+        android:layout_marginStart="20pt"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:layout_below="@id/btn_increment"
+        android:orientation="vertical"
+        android:text="3"/>
+
+    <ImageButton
+        android:layout_width="30pt"
+        android:layout_height="20pt"
+        android:src="@drawable/chevrondown"
+        android:layout_marginStart="20pt"
+        android:layout_below="@id/textView_playersMax"
+        android:id="@+id/btn_decrement"
+        android:contentDescription="@string/playersMax"
+        android:onClick="decrementPlayersCount"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="30pt"
+        android:layout_below="@id/textView_createLobby"
+        android:layout_marginStart="5pt"
+        android:layout_marginTop="25pt"
+        android:layout_toEndOf="@id/textView_playersMax"
+        android:gravity="center"
+        android:text="@string/playersMax"
+        android:textSize="17sp" />
+
+    <Switch
+        android:id="@+id/checkbox_forFriendsOnly"
+        android:layout_width="30pt"
+        android:layout_height="30pt"
+        android:layout_below="@id/btn_decrement"
+        android:layout_marginStart="20pt"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="30pt"
+        android:layout_marginStart="5pt"
+        android:text="@string/forFriendsOnly"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:layout_marginTop="20pt"
+        android:layout_toEndOf="@id/checkbox_forFriendsOnly"
+        android:layout_below="@id/textView_playersMax"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10pt"
+        android:padding="10pt"
+        android:layout_alignParentBottom="true"
+        android:text="@string/createLobby"
+        android:textSize="24sp"
+        android:onClick="createLobby"/>
+
+</RelativeLayout>

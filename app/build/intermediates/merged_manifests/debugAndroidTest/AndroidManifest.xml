@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.myapplication.test" >
+    package="com.munchkin.test" >
 
     <uses-sdk
         android:minSdkVersion="19"
@@ -10,8 +10,8 @@
         android:name="android.support.test.runner.AndroidJUnitRunner"
         android:functionalTest="false"
         android:handleProfiling="false"
-        android:label="Tests for com.example.myapplication"
-        android:targetPackage="com.example.myapplication" />
+        android:label="Tests for com.munchkin"
+        android:targetPackage="com.munchkin" />
 
     <application android:debuggable="true" >
         <uses-library android:name="android.test.runner" />
