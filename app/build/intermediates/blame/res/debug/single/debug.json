@@ -1124,6 +1124,10 @@
         "source": "C:\\Users\\Vladislav\\.gradle\\caches\\transforms-2\\files-2.1\\592f2466be9f8f65f835be899b816025\\res\\drawable-xhdpi-v4\\abc_btn_radio_to_on_mtrl_000.png"
     },
     {
+        "merged": "D:\\AndroidStudioProjects\\Munchkin\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_lobby.xml.flat",
+        "source": "D:\\AndroidStudioProjects\\Munchkin\\app\\src\\main\\res\\layout\\activity_lobby.xml"
+    },
+    {
         "merged": "D:\\AndroidStudioProjects\\Munchkin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_scrubber_primary_mtrl_alpha.9.png.flat",
         "source": "C:\\Users\\Vladislav\\.gradle\\caches\\transforms-2\\files-2.1\\592f2466be9f8f65f835be899b816025\\res\\drawable-xxhdpi-v4\\abc_scrubber_primary_mtrl_alpha.9.png"
     },
@@ -1418,6 +1422,10 @@
     {
         "merged": "D:\\AndroidStudioProjects\\Munchkin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21_abc_list_divider_material.xml.flat",
         "source": "C:\\Users\\Vladislav\\.gradle\\caches\\transforms-2\\files-2.1\\592f2466be9f8f65f835be899b816025\\res\\drawable-v21\\abc_list_divider_material.xml"
+    },
+    {
+        "merged": "D:\\AndroidStudioProjects\\Munchkin\\app\\build\\intermediates\\res\\merged\\debug\\drawable_three_dots.png.flat",
+        "source": "D:\\AndroidStudioProjects\\Munchkin\\app\\src\\main\\res\\drawable\\three_dots.png"
     },
     {
         "merged": "D:\\AndroidStudioProjects\\Munchkin\\app\\build\\intermediates\\res\\merged\\debug\\color_abc_primary_text_material_dark.xml.flat",

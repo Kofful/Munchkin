@@ -30,6 +30,7 @@
         android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/AppTheme" >
+        <activity android:name="com.munchkin.lobby.LobbyActivity" />
         <activity
             android:name="com.munchkin.register.RegisterActivity"
             android:screenOrientation="sensorLandscape" />
@@ -51,8 +52,7 @@
         <activity
             android:name="com.munchkin.main.MainActivity"
             android:screenOrientation="sensorLandscape"
-            android:theme="@style/noAnimationTheme" >
-        </activity>
+            android:theme="@style/noAnimationTheme" />
     </application>
 
 </manifest>

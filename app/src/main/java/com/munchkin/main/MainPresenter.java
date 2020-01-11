@@ -1,24 +1,11 @@
 package com.munchkin.main;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.util.Log;
-
 import com.munchkin.Friend;
-import com.munchkin.R;
 import com.munchkin.User;
-import com.munchkin.creatinglobby.CreatingLobbyActivity;
+import com.munchkin.responses.LobbyAndUsers;
 
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.net.InetAddress;
-import java.net.Socket;
 import java.net.SocketException;
 import java.util.ArrayList;
-
-import okhttp3.WebSocket;
-
 public class MainPresenter {
     private MainActivity activity;
     private MainModel model;
@@ -28,12 +15,16 @@ public class MainPresenter {
         model = new MainModel(userId);
     }
 
-    public void findLobby() {
+    public LobbyAndUsers findLobby(String nickname) {
+        LobbyAndUsers result;
         try {
-            model.findLobby();
+            result = model.findLobby(nickname);
         } catch (SocketException ex) {
+            result = new LobbyAndUsers();
+            result.setLobbyId(-1);
             activity.showNoConnectionAlert();
         }
+        return result;
     }
 
     public void getFriends(User user) {

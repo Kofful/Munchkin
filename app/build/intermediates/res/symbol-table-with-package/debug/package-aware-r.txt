@@ -1029,6 +1029,7 @@ drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
 drawable red_circle
+drawable three_dots
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
 id ALT
@@ -1139,6 +1140,7 @@ id largeLabel
 id left
 id line1
 id line3
+id linear_players
 id link_signup
 id listMode
 id list_item
@@ -1306,6 +1308,7 @@ layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_creating_lobby
 layout activity_finding_lobby
+layout activity_lobby
 layout activity_login
 layout activity_menu
 layout activity_register
@@ -1401,6 +1404,7 @@ string incorrectEmail
 string incorrectPassword
 string mtrl_chip_close_icon_content_description
 string noConnection
+string noLobbyFound
 string password_toggle_content_description
 string path_password_eye
 string path_password_eye_mask_strike_through
@@ -1411,10 +1415,12 @@ string playersMax
 string remove
 string search_menu_title
 string sendRequest
+string start
 string status_bar_notification_info_overflow
 string subscribers
 string thisEmailExists
 string thisNickNameExists
+string waiting
 string wrongEmailAddress
 string wrongNickNameLength
 string wrongPasswordLength

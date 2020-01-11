@@ -46,7 +46,7 @@ public class LoginModel {
             };
             thread.start();
             thread.join();
-            return User.getAnswer();
+            return user.getAnswer();
         } catch(Exception ex){
             Log.i("DEBUGGING", ex.getClass().toString());
         }

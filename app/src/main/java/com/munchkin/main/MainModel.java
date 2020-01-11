@@ -6,6 +6,8 @@ import android.util.Log;
 
 import com.munchkin.Friend;
 import com.munchkin.User;
+import com.munchkin.lobby.LobbyActivity;
+import com.munchkin.responses.LobbyAndUsers;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -72,18 +74,18 @@ public class MainModel {
                             user.addFriend(friend);
                             friendsCount--;
                         }
-                        User.setAnswer(1);
+                        User.setStaticAnswer(1);
                     } catch (SocketException ex) {
-                        User.setAnswer(-1);//means internet problems
+                        User.setStaticAnswer(-1);//means internet problems
                     } catch (Exception ex) {
-                        User.setAnswer(0);//means some Exception
+                        User.setStaticAnswer(0);//means some Exception
                         Log.i("DEBUGGING", ex.getClass().toString());
                     }
                 }
             };
             thread.start();
             thread.join();
-            if(User.getAnswer() == -1 ) {
+            if(User.getStaticAnswer() == -1 ) {
                 throw new SocketException("MUNCHKIN: Socket Exception.");
             }
         } catch (SocketException ex) {
@@ -109,16 +111,16 @@ public class MainModel {
                             result.add(friend);
                             friendsCount--;
                         }
-                        User.setAnswer(1);
+                        User.setStaticAnswer(1);
                     } catch (Exception ex) {
-                        User.setAnswer(-1);
+                        User.setStaticAnswer(-1);
                         Log.i("DEBUGGING", ex.getClass().toString());
                     }
                 }
             };
             thread.start();
             thread.join();
-            if(User.getAnswer() == -1 ) {
+            if(User.getStaticAnswer() == -1 ) {
                 throw new SocketException("MUNCHKIN: Socket Exception.");
             }
         } catch (SocketException ex) {
@@ -147,16 +149,16 @@ public class MainModel {
                             result.add(friend);
                             friendsCount--;
                         }
-                        User.setAnswer(1);
+                        User.setStaticAnswer(1);
                     } catch (Exception ex) {
-                        User.setAnswer(-1);
+                        User.setStaticAnswer(-1);
                         Log.i("DEBUGGING", ex.getClass().toString());
                     }
                 }
             };
             thread.start();
             thread.join();
-            if(User.getAnswer() == -1 ) {
+            if(User.getStaticAnswer() == -1 ) {
                 throw new SocketException("MUNCHKIN: Socket Exception.");
             }
         } catch (Exception ex) {
@@ -174,16 +176,16 @@ public class MainModel {
                         oos.writeInt(SEND_FRIEND_REQUEST);
                         oos.writeObject(name);
                         oos.flush();
-                        User.setAnswer(1);
+                        User.setStaticAnswer(1);
                     } catch (Exception ex) {
-                        User.setAnswer(-1);
+                        User.setStaticAnswer(-1);
                         Log.i("DEBUGGING", ex.getClass().toString());
                     }
                 }
             };
             thread.start();
             thread.join();
-            if(User.getAnswer() == -1 ) {
+            if(User.getStaticAnswer() == -1 ) {
                 throw new SocketException("MUNCHKIN: Socket Exception.");
             }
         } catch(SocketException ex) {
@@ -202,15 +204,15 @@ public class MainModel {
                         oos.writeInt(ACCEPT_FRIEND);
                         oos.writeObject(name);
                         oos.flush();
-                        User.setAnswer(1);
+                        User.setStaticAnswer(1);
                     } catch (Exception ex) {
-                        User.setAnswer(-1);
+                        User.setStaticAnswer(-1);
                         Log.i("DEBUGGING", ex.getClass().toString());
                     }
                 }
             };
             thread.start();thread.join();
-            if(User.getAnswer() == -1 ) {
+            if(User.getStaticAnswer() == -1 ) {
                 throw new SocketException("MUNCHKIN: Socket Exception.");
             }
         } catch(SocketException ex) {
@@ -229,15 +231,15 @@ public class MainModel {
                         oos.writeInt(DENY_FRIEND);
                         oos.writeObject(name);
                         oos.flush();
-                        User.setAnswer(1);
+                        User.setStaticAnswer(1);
                     } catch (Exception ex) {
-                        User.setAnswer(-1);
+                        User.setStaticAnswer(-1);
                         Log.i("DEBUGGING", ex.getClass().toString());
                     }
                 }
             };
             thread.start();thread.join();
-            if(User.getAnswer() == -1 ) {
+            if(User.getStaticAnswer() == -1 ) {
                 throw new SocketException("MUNCHKIN: Socket Exception.");
             }
         } catch(SocketException ex) {
@@ -257,15 +259,15 @@ public class MainModel {
                         oos.writeInt(REMOVE_FRIEND);
                         oos.writeObject(name);
                         oos.flush();
-                        User.setAnswer(1);
+                        User.setStaticAnswer(1);
                     } catch (Exception ex) {
-                        User.setAnswer(-1);
+                        User.setStaticAnswer(-1);
                         Log.i("DEBUGGING", ex.getClass().toString());
                     }
                 }
             };
             thread.start();thread.join();
-            if(User.getAnswer() == -1 ) {
+            if(User.getStaticAnswer() == -1 ) {
                 throw new SocketException("MUNCHKIN: Socket Exception.");
             }
         } catch(SocketException ex) {
@@ -275,33 +277,48 @@ public class MainModel {
         }
     }
 
-    public void findLobby() throws SocketException {
+    public LobbyAndUsers findLobby(String nickname) throws SocketException {
+        LobbyAndUsers result = new LobbyAndUsers();
         try {
             Thread thread = new Thread() {
                 @Override
                 public void run() {
                     try {
                         oos.writeInt(FIND_LOBBY);
+                        oos.writeObject(nickname);
                         oos.flush();
-                        int lobbyId = ois.readInt();
-                        User.setAnswer(1);
+                        result.setLobbyId(ois.readInt());
+                        if(result.getLobbyId() != 0) {
+                            int maxPlayers = ois.readInt();
+                            result.setMaxPlayers(maxPlayers);
+                            int count = ois.readInt();
+                            for (int i = 0; i < count; i++) {
+                                result.addUser((String) ois.readObject());
+                            }
+                        }
                     } catch (SocketException ex) {
-                        User.setAnswer(-1);
+                        result.setLobbyId(-1);
                         Log.i("DEBUGGING", ex.getClass().toString());
                     } catch (IOException ex) {
                         Log.i("DEBUGGING", ex.getClass().toString());
                     }
+                    catch(ClassNotFoundException ex) {
+                        Log.i("DEBUGGING", ex.getMessage());
+                    }
                 }
             };
-            thread.start();thread.join();
-            if(User.getAnswer() == -1 ) {
+            thread.start();
+            thread.join();
+            if(User.getStaticAnswer() == -1 ) {
                 throw new SocketException("MUNCHKIN: Socket Exception.");
             }
         } catch(SocketException ex) {
             throw ex;
         } catch(Exception ex) {
+            result.setLobbyId(0);
             Log.i("DEBUGGING", ex.getClass().toString());
         }
+        return result;
     }
 
     public static void createLobby(int players, boolean friendsOnly) throws SocketException{
@@ -315,18 +332,19 @@ public class MainModel {
                         oos.writeBoolean(friendsOnly);
                         oos.flush();
                         int lobbyId = ois.readInt();
-                        User.setAnswer(1);
+                        User.setStaticAnswer(lobbyId);
                     } catch (SocketException ex) {
-                        User.setAnswer(-1);
-                        User.setAnswer(0);
+                        User.setStaticAnswer(-1);
                         Log.i("DEBUGGING", ex.getClass().toString());
                     } catch (IOException ex) {
+                        User.setStaticAnswer(0);
                         Log.i("DEBUGGING", ex.getClass().toString());
                     }
                 }
             };
-            thread.start();thread.join();
-            if(User.getAnswer() == -1 ) {
+            thread.start();
+            thread.join();
+            if(User.getStaticAnswer() == -1 ) {
                 throw new SocketException("MUNCHKIN: Socket Exception.");
             }
         } catch(SocketException ex) {

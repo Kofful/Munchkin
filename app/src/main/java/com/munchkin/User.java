@@ -7,9 +7,17 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class User implements Serializable {
+    /**
+     * used in deny, accept, remove queries
+     */
+    private static int staticAnswer;
+    /**
+     *
+     * used to login and register
+     */
     @SerializedName("answer")
     @Expose
-    private static int answer = 0;
+    private int answer = 0;
     @SerializedName("userId")
     @Expose
     private int userId;
@@ -70,12 +78,12 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public static int getAnswer() {
+    public int getAnswer() {
         return answer;
     }
 
-    public static void setAnswer(int answer) {
-        User.answer = answer;
+    public void setAnswer(int answer) {
+        this.answer = answer;
     }
 
     public ArrayList<Friend> getFriends() {
@@ -86,5 +94,13 @@ public class User implements Serializable {
         if (friends == null)
             friends = new ArrayList<>();
         friends.add(friend);
+    }
+
+    public static int getStaticAnswer() {
+        return staticAnswer;
+    }
+
+    public static void setStaticAnswer(int answer) {
+        staticAnswer = answer;
     }
 }

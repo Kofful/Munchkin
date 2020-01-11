@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Munchkin</string>
+    <string name="app_name" translatable="false">Munchkin</string>
     <string name="createLobby">Create lobby</string>
     <string name="findLobby">Find lobby</string>
     <string name="playWithFriends">Play with friends</string>
@@ -19,4 +19,7 @@
     <string name="deny">Deny</string>
     <string name="forFriendsOnly">For friends only</string>
     <string name="playersMax">Players</string>
+    <string name="start">Start</string>
+    <string name="waiting">Waiting</string>
+    <string name="noLobbyFound">No lobby found</string>
 </resources>

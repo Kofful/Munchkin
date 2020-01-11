@@ -7,7 +7,6 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.ContextMenu;
 import android.view.View;
 import android.widget.Toast;
@@ -16,8 +15,9 @@ import com.munchkin.Friend;
 import com.munchkin.R;
 import com.munchkin.User;
 import com.munchkin.creatinglobby.CreatingLobbyActivity;
-import com.munchkin.findinglobby.FindingServiceActivity;
+import com.munchkin.lobby.LobbyActivity;
 import com.munchkin.main.friends.FriendsFragment;
+import com.munchkin.responses.LobbyAndUsers;
 
 import java.util.ArrayList;
 
@@ -62,7 +62,30 @@ public class MainActivity extends AppCompatActivity implements MainView {
 
     @Override
     public void findLobby(View view) {
-        presenter.findLobby();
+        User user = (User)getIntent().getSerializableExtra("user");
+        LobbyAndUsers result = presenter.findLobby(user.getNickname());
+        if(result.getLobbyId() == 0) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle(getResources().getString(R.string.noLobbyFound))
+                    .setCancelable(false)
+                    .setNegativeButton("ОК",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    //finishAffinity();
+                                    //System.exit(0);//TODO change
+                                    //finish();
+                                }
+                            });
+            AlertDialog alert = builder.create();
+            alert.show();
+        } else {
+            Intent intent = new Intent(this, LobbyActivity.class);
+            intent.putExtra("user", user);
+            intent.putExtra("lobbyId", result.getLobbyId());
+            intent.putExtra("maxplayers", result.getMaxPlayers());
+            intent.putStringArrayListExtra("players", result.getUsers());
+            startActivity(intent);
+        }
     }
 
     public void playWithFriends(View view) {
@@ -117,7 +140,6 @@ public class MainActivity extends AppCompatActivity implements MainView {
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v,
                                     ContextMenu.ContextMenuInfo menuInfo) {
-        Log.i("DEBUGGING", "context");
         menu.add(0, 1, 0, "Remove");
     }
 
@@ -149,8 +171,9 @@ public class MainActivity extends AppCompatActivity implements MainView {
                 .setNegativeButton("ОК",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
-                                finishAffinity();
-                                System.exit(0);
+                                //finishAffinity();
+                                //System.exit(0);
+                                //finish();
                             }
                         });
         AlertDialog alert = builder.create();

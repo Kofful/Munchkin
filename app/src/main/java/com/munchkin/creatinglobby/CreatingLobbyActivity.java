@@ -1,6 +1,9 @@
 package com.munchkin.creatinglobby;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -12,6 +15,7 @@ import android.widget.Toast;
 
 import com.munchkin.R;
 import com.munchkin.User;
+import com.munchkin.lobby.LobbyActivity;
 import com.munchkin.main.MainModel;
 
 public class CreatingLobbyActivity extends Activity implements CreatingLobbyView {
@@ -35,6 +39,13 @@ public class CreatingLobbyActivity extends Activity implements CreatingLobbyView
         int players = Integer.parseInt(playersMax.getText().toString());
         boolean friendsOnly = ((Switch)findViewById(R.id.checkbox_forFriendsOnly)).isChecked();
         presenter.createLobby(players, friendsOnly);
+        Intent intent = new Intent(this, LobbyActivity.class);
+        intent.putExtra("maxplayers", players);
+        intent.putExtra("friendsonly", friendsOnly);
+        intent.putExtra("iscreator", true);
+        User user = (User)getIntent().getSerializableExtra("user");
+        intent.putExtra("user", user);
+        startActivity(intent);
     }
 
     public void incrementPlayersCount(View view) {
@@ -56,6 +67,11 @@ public class CreatingLobbyActivity extends Activity implements CreatingLobbyView
 
     @Override
     public void showNoConnectionAlert() {
-        //TODO show alert
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(getResources().getString(R.string.noConnection))
+                .setCancelable(false)
+                .setNegativeButton("ОК", null);
+        AlertDialog alert = builder.create();
+        alert.show();
     }
 }

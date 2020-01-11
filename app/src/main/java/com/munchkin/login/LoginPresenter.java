@@ -46,7 +46,7 @@ public class LoginPresenter {
                 activity.setContentView(R.layout.activity_login);
             }
         } catch(Exception ex) {
-            Log.i("DEBUGGING", ex.getMessage());
+            Log.i("DEBUGGING", ex.getClass().toString());
             activity.setContentView(R.layout.activity_login);
         }
     }

@@ -23,15 +23,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".register.RegisterActivity"
+        <activity android:name=".lobby.LobbyActivity"></activity>
+        <activity
+            android:name=".register.RegisterActivity"
             android:screenOrientation="sensorLandscape" />
-        <activity android:name=".login.LoginActivity"
+        <activity
+            android:name=".login.LoginActivity"
             android:screenOrientation="sensorLandscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter></activity>
+            </intent-filter>
+        </activity>
         <activity
             android:name=".findinglobby.FindingServiceActivity"
             android:screenOrientation="sensorLandscape" />
@@ -41,8 +45,7 @@
         <activity
             android:name=".main.MainActivity"
             android:screenOrientation="sensorLandscape"
-            android:theme="@style/noAnimationTheme">
-        </activity>
+            android:theme="@style/noAnimationTheme"></activity>
     </application>
 
 </manifest>

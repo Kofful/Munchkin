@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="accept">Подтвердить</string>
+    <string name="createLobby">Создать игру</string>
+    <string name="deny">Отвергнуть</string>
+    <string name="findLobby">Найти игру</string>
+    <string name="forFriendsOnly">Только для друзей</string>
+    <string name="friends">Друзья</string>
+    <string name="incorrectEmail">Неправильный e-mail</string>
+    <string name="incorrectPassword">Неправильный пароль</string>
+    <string name="noConnection">Нет подключения</string>
+    <string name="playWithFriends">Играть с друзьями</string>
+    <string name="playersMax">Игроки</string>
+    <string name="remove">Удалить</string>
+    <string name="sendRequest">Отправить запрос</string>
+    <string name="start">Старт</string>
+    <string name="subscribers">Предложения</string>
+    <string name="thisEmailExists">Этот email уже существует</string>
+    <string name="thisNickNameExists">Этот псевдоним уже существует</string>
+    <string name="waiting">Ожидание</string>
+    <string name="wrongEmailAddress">Такого email не существует</string>
+    <string name="wrongNickNameLength">Длина имени должна быть от 3 до 20 символов</string>
+    <string name="wrongPasswordLength">Длина пароля должна быть больше 6 символов</string>
+    <string name="noLobbyFound">Игра не найдена</string>
+</resources>
