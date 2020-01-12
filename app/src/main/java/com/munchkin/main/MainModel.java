@@ -7,6 +7,7 @@ import android.util.Log;
 import com.munchkin.Friend;
 import com.munchkin.User;
 import com.munchkin.lobby.LobbyActivity;
+import com.munchkin.lobby.LobbyPresenter;
 import com.munchkin.responses.LobbyAndUsers;
 
 import java.io.IOException;
@@ -27,6 +28,9 @@ public class MainModel {
     static final int CREATE_LOBBY = 1008;
     static final int FIND_LOBBY = 1009;
     static final int GET_FRIEND_LOBBY = 1010;
+    static final int ADD_USER_IN_LOBBY = 1011;
+    static final int REMOVE_USER_FROM_LOBBY = 1012;
+    static final int START_GAME = 1013;
     private static ObjectOutputStream oos;
     private static ObjectInputStream ois;
     private static Socket socket;
@@ -352,6 +356,38 @@ public class MainModel {
         } catch(Exception ex) {
             Log.i("DEBUGGING", ex.getClass().toString());
         }
+    }
+
+    public static void handleLobbyConnections(LobbyPresenter presenter) {
+        Thread thread = new Thread() {
+            @Override
+            public void run() {
+                while(true) {
+                    try {
+                        int code = ois.readInt();
+                        switch(code) {
+                            case ADD_USER_IN_LOBBY: {
+                                String nickname = (String)ois.readObject();
+                                presenter.addUser(nickname);
+                                break;
+                            }
+                            case REMOVE_USER_FROM_LOBBY: {
+                                String nickname = (String)ois.readObject();
+                                presenter.removeUser(nickname);
+                                break;
+                            }
+                            case START_GAME: {
+                                presenter.startGame();
+                            }
+                        }
+                    } catch (Exception ex) {
+                        Log.i("DEBUGGING", ex.getMessage());
+                        break;
+                    }
+                }
+            }
+        };
+        thread.start();
     }
 
     public static void goOffline() {

@@ -68,4 +68,37 @@ public class LobbyActivity extends AppCompatActivity implements LobbyView{
         linear.addView(text);
         return linear;
     }
+
+    @Override
+    public void addUser(String nickname) {
+        LinearLayout playerList = findViewById(R.id.linear_players);
+        LinearLayout player;
+        for(int i = 0; i < playerList.getChildCount(); i++) {
+            player = (LinearLayout)playerList.getChildAt(i);
+            TextView nicknameView = (TextView)player.getChildAt(1);
+            if(nicknameView.getText() != getResources().getString(R.string.waiting)) {
+                nicknameView.setText(nickname);
+                //TODO change image
+            }
+        }
+    }
+
+    @Override
+    public void removeUser(String nickname) {
+        LinearLayout playerList = findViewById(R.id.linear_players);
+        LinearLayout player;
+        for(int i = 0; i < playerList.getChildCount(); i++) {
+            player = (LinearLayout)playerList.getChildAt(i);
+            TextView nicknameView = (TextView)player.getChildAt(1);
+            if(nicknameView.getText() != getResources().getString(R.string.waiting)) {
+                playerList.removeViewAt(i);
+                playerList.addView(createLinearPlayer(getResources().getString(R.string.waiting)));
+            }
+        }
+    }
+
+    @Override
+    public void startGame() {
+
+    }
 }
