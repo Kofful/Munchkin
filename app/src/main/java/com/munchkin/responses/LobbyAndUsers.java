@@ -6,6 +6,7 @@ public class LobbyAndUsers {
     private int lobbyId;
     private int maxPlayers;
     private ArrayList<String> users = new ArrayList<>();
+    private ArrayList<Integer> avatars = new ArrayList<>();
 
     public int getLobbyId() {
         return lobbyId;
@@ -23,6 +24,15 @@ public class LobbyAndUsers {
         users.add(nickname);
     }
 
+
+    public ArrayList<Integer> getAvatars() {
+        return avatars;
+    }
+
+    public void addAvatar(int avatar) {
+        avatars.add(avatar);
+    }
+
     public int getMaxPlayers() {
         return maxPlayers;
     }
@@ -31,3 +41,5 @@ public class LobbyAndUsers {
         this.maxPlayers = maxPlayers;
     }
 }
+
+

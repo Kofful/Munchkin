@@ -14,7 +14,7 @@
     <string name="remove">Удалить</string>
     <string name="sendRequest">Отправить запрос</string>
     <string name="start">Старт</string>
-    <string name="subscribers">Предложения</string>
+    <string name="subscribers">Запросы</string>
     <string name="thisEmailExists">Этот email уже существует</string>
     <string name="thisNickNameExists">Этот псевдоним уже существует</string>
     <string name="waiting">Ожидание</string>
@@ -22,4 +22,12 @@
     <string name="wrongNickNameLength">Длина имени должна быть от 3 до 20 символов</string>
     <string name="wrongPasswordLength">Длина пароля должна быть больше 6 символов</string>
     <string name="noLobbyFound">Игра не найдена</string>
+    <string name="password">Пароль</string>
+    <string name="dont_have_account">Нет аккаунта? Создайте сейчас!</string>
+    <string name="nickname">Псевдоним</string>
+    <string name="login">Войти</string>
+    <string name="register">Зарегистрироваться</string>
+    <string name="have_an_account">Уже есть аккаунт? Войдите</string>
+    <string name="language">Язык</string>
+    <string name="restart_to_apply_changes">Для сохранения изменений необходим перезапуск</string>
 </resources>

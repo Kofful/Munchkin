@@ -3,6 +3,17 @@
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent">
     <Button
+
+        android:layout_width="25pt"
+        android:layout_height="25pt"
+        android:layout_marginEnd="4pt"
+        android:layout_marginBottom="4pt"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/settings"
+        android:onClick="showSettings"
+        style="@style/greyButton"/>
+    <Button
         android:layout_width="25pt"
         android:layout_height="25pt"
         android:layout_marginEnd="4pt"

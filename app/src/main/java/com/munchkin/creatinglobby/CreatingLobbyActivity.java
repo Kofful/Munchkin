@@ -35,18 +35,21 @@ public class CreatingLobbyActivity extends Activity implements CreatingLobbyView
 
     @Override
     public void createLobby(View view) {
+
         TextView playersMax = findViewById(R.id.textView_playersMax);
         int players = Integer.parseInt(playersMax.getText().toString());
         boolean friendsOnly = ((Switch)findViewById(R.id.checkbox_forFriendsOnly)).isChecked();
         presenter.createLobby(players, friendsOnly);
+        int avatarId = presenter.getAvatar();
         Intent intent = new Intent(this, LobbyActivity.class);
+        intent.putExtra("avatarid", avatarId);
         intent.putExtra("maxplayers", players);
         intent.putExtra("friendsonly", friendsOnly);
         intent.putExtra("iscreator", true);
         User user = (User)getIntent().getSerializableExtra("user");
         intent.putExtra("user", user);
         startActivity(intent);
-    }
+        }
 
     public void incrementPlayersCount(View view) {
         TextView playersMax = findViewById(R.id.textView_playersMax);

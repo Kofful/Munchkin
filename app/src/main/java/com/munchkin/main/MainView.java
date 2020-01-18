@@ -8,6 +8,8 @@ import com.munchkin.User;
 import java.util.ArrayList;
 
 public interface MainView {
+    void exit(View view);
+    void showSettings(View view);
     void createLobby(View view);
     void findLobby(View view);
     void showFriendList(View view);

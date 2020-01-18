@@ -1,14 +1,21 @@
 package com.munchkin.login;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.munchkin.R;
 import com.munchkin.register.RegisterActivity;
+
+import java.util.Locale;
 
 public class LoginActivity extends AppCompatActivity implements LoginView{
 
@@ -17,6 +24,14 @@ public class LoginActivity extends AppCompatActivity implements LoginView{
     protected void onCreate(Bundle savedInstanceState) {
         presenter = new LoginPresenter(this);
         super.onCreate(savedInstanceState);
+        SharedPreferences sharedPref = getSharedPreferences("language", Context.MODE_PRIVATE);
+        String str = sharedPref.getString("str", "ru");
+        Locale locale = new Locale(str);
+        Resources res = getResources();
+        DisplayMetrics dm = res.getDisplayMetrics();
+        Configuration conf = res.getConfiguration();
+        conf.locale = locale;
+        res.updateConfiguration(conf, dm);
     }
     @Override
     public void login(View view) {

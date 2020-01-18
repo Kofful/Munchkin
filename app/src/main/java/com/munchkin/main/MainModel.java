@@ -31,9 +31,13 @@ public class MainModel {
     static final int ADD_USER_IN_LOBBY = 1011;
     static final int REMOVE_USER_FROM_LOBBY = 1012;
     static final int START_GAME = 1013;
+    static final int CLOSE_LOBBY = 1014;
+    static final int CHANGE_AVATAR = 1015;
+    static final int GET_AVATAR = 1016;
     private static ObjectOutputStream oos;
     private static ObjectInputStream ois;
     private static Socket socket;
+    private static int lobbyId;
 
     public MainModel(int userId) {
         try {
@@ -292,11 +296,13 @@ public class MainModel {
                         oos.writeObject(nickname);
                         oos.flush();
                         result.setLobbyId(ois.readInt());
+                        lobbyId = result.getLobbyId();
                         if(result.getLobbyId() != 0) {
                             int maxPlayers = ois.readInt();
                             result.setMaxPlayers(maxPlayers);
                             int count = ois.readInt();
                             for (int i = 0; i < count; i++) {
+                                result.addAvatar(ois.readInt());
                                 result.addUser((String) ois.readObject());
                             }
                         }
@@ -335,8 +341,135 @@ public class MainModel {
                         oos.writeInt(players);
                         oos.writeBoolean(friendsOnly);
                         oos.flush();
-                        int lobbyId = ois.readInt();
+                        lobbyId = ois.readInt();
+
                         User.setStaticAnswer(lobbyId);
+                    } catch (SocketException ex) {
+                        User.setStaticAnswer(-1);
+                        Log.i("DEBUGGING", ex.getClass().toString());
+                    } catch (IOException ex) {
+                        User.setStaticAnswer(0);
+                        Log.i("DEBUGGING", ex.getClass().toString());
+                    }
+                }
+            };
+            thread.start();
+            thread.join();
+            if(User.getStaticAnswer() == -1 ) {
+                throw new SocketException("MUNCHKIN: Socket Exception.");
+            }
+        } catch(SocketException ex) {
+            throw ex;
+        } catch(Exception ex) {
+            Log.i("DEBUGGING", ex.getClass().toString());
+        }
+    }
+
+    public static void closeLobby() throws SocketException {
+        try {
+            Thread thread = new Thread() {
+                @Override
+                public void run() {
+                    try {
+                        oos.writeInt(CLOSE_LOBBY);
+                        oos.writeInt(lobbyId);
+                        oos.flush();
+                        User.setStaticAnswer(1);
+                    } catch (SocketException ex) {
+                        User.setStaticAnswer(-1);
+                        Log.i("DEBUGGING", ex.getClass().toString());
+                    } catch (IOException ex) {
+                        User.setStaticAnswer(0);
+                        Log.i("DEBUGGING", ex.getClass().toString());
+                    }
+                }
+            };
+            thread.start();
+            thread.join();
+            if(User.getStaticAnswer() == -1 ) {
+                throw new SocketException("MUNCHKIN: Socket Exception.");
+            }
+        } catch(SocketException ex) {
+            throw ex;
+        } catch(Exception ex) {
+            Log.i("DEBUGGING", ex.getClass().toString());
+        }
+    }
+
+    public static void changeAvatar(int avatarId) throws SocketException {
+        try {
+            Thread thread = new Thread() {
+                @Override
+                public void run() {
+                    try {
+                        oos.writeInt(CHANGE_AVATAR);
+                        oos.writeInt(avatarId);
+                        oos.flush();
+                        User.setStaticAnswer(1);
+                    } catch (SocketException ex) {
+                        User.setStaticAnswer(-1);
+                        Log.i("DEBUGGING", ex.getClass().toString());
+                    } catch (IOException ex) {
+                        User.setStaticAnswer(0);
+                        Log.i("DEBUGGING", ex.getClass().toString());
+                    }
+                }
+            };
+            thread.start();
+            thread.join();
+            if(User.getStaticAnswer() == -1 ) {
+                throw new SocketException("MUNCHKIN: Socket Exception.");
+            }
+        } catch(SocketException ex) {
+            throw ex;
+        } catch(Exception ex) {
+            Log.i("DEBUGGING", ex.getClass().toString());
+        }
+    }
+
+    public static int getAvatar() throws SocketException{
+        try {
+            Thread thread = new Thread() {
+                @Override
+                public void run() {
+                    try {
+                        oos.writeInt(GET_AVATAR);
+                        oos.flush();
+                        int avatarId = ois.readInt();
+                        Log.i("DEBUGGING", String.valueOf(avatarId));
+                        User.setStaticAnswer(avatarId);
+                    } catch (SocketException ex) {
+                        User.setStaticAnswer(-1);
+                        Log.i("DEBUGGING", ex.getClass().toString());
+                    } catch (IOException ex) {
+                        User.setStaticAnswer(0);
+                        Log.i("DEBUGGING", ex.getClass().toString());
+                    }
+                }
+            };
+            thread.start();
+            thread.join();
+            if(User.getStaticAnswer() == -1 ) {
+                throw new SocketException("MUNCHKIN: Socket Exception.");
+            }
+        } catch(SocketException ex) {
+            throw ex;
+        } catch(Exception ex) {
+            Log.i("DEBUGGING", ex.getClass().toString());
+        }
+        return User.getStaticAnswer();
+    }
+
+    public static void leaveLobby()throws SocketException{
+        try {
+            Thread thread = new Thread() {
+                @Override
+                public void run() {
+                    try {
+                        oos.writeInt(REMOVE_USER_FROM_LOBBY);
+                        oos.writeInt(lobbyId);
+                        oos.flush();
+                        User.setStaticAnswer(1);
                     } catch (SocketException ex) {
                         User.setStaticAnswer(-1);
                         Log.i("DEBUGGING", ex.getClass().toString());
@@ -365,10 +498,12 @@ public class MainModel {
                 while(true) {
                     try {
                         int code = ois.readInt();
+                        Log.i("DEBUGGING", String.valueOf(code));
                         switch(code) {
                             case ADD_USER_IN_LOBBY: {
+                                int avatar = ois.readInt();
                                 String nickname = (String)ois.readObject();
-                                presenter.addUser(nickname);
+                                presenter.addUser(nickname, avatar);
                                 break;
                             }
                             case REMOVE_USER_FROM_LOBBY: {
@@ -381,7 +516,7 @@ public class MainModel {
                             }
                         }
                     } catch (Exception ex) {
-                        Log.i("DEBUGGING", ex.getMessage());
+                        Log.i("DEBUGGING", ex.getClass().toString());
                         break;
                     }
                 }
@@ -389,6 +524,7 @@ public class MainModel {
         };
         thread.start();
     }
+
 
     public static void goOffline() {
         try {

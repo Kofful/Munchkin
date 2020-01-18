@@ -42,15 +42,21 @@ public class LoginPresenter {
                                     });
                     AlertDialog alert = builder.create();
                     alert.show();
-            } else {//incorrect login data
-                activity.setContentView(R.layout.activity_login);
             }
         } catch(Exception ex) {
             Log.i("DEBUGGING", ex.getClass().toString());
             activity.setContentView(R.layout.activity_login);
         }
+        activity.setContentView(R.layout.activity_login);
     }
     public void login(String email, String password) {
+        if(email.replace(" ", "").equals("")) {
+            activity.showMessage(activity.getResources().getString(R.string.incorrectEmail));
+            return;
+        } else if(password.replace(" ", "").equals("")){
+            activity.showMessage(activity.getResources().getString(R.string.incorrectPassword));
+            return;
+        }
         switch(model.login(email, password)) {
             case 0:
                 try {

@@ -85,6 +85,17 @@ public class MainPresenter {
         }
     }
 
+
+    public int getAvatar() {
+        int avatarId = 0;
+        try {
+            avatarId = MainModel.getAvatar();
+        } catch(SocketException ex) {
+            activity.showNoConnectionAlert();
+        }
+        return avatarId;
+    }
+
     public void goOffline() {
         MainModel.goOffline();
     }

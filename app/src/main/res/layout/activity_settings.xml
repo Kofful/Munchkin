@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".settings.SettingsActivity">
+    <Button
+        android:layout_marginTop="4pt"
+        android:layout_marginStart="4pt"
+        android:layout_width="25pt"
+        android:layout_height="25pt"
+        android:background="@drawable/left_arrow"
+        style="@style/greyButton"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:onClick="back"/>
+
+    <FrameLayout
+        android:layout_width="60pt"
+        android:layout_height="60pt"
+        android:layout_marginTop="10pt"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical">
+
+        <ImageButton
+            android:id="@+id/btn_avatar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/monster3"
+            android:onClick="showAvatars"/>
+
+        <ImageButton
+            android:layout_width="10pt"
+            android:layout_height="10pt"
+            android:background="@drawable/settings"
+            style="@style/greyButton"/>
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/tv_languages"
+        android:layout_width="100pt"
+        android:layout_height="20pt"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="60pt"
+        android:gravity="center|bottom"
+        android:text="@string/language">
+
+    </TextView>
+
+    <Spinner
+        android:id="@+id/spin_languages"
+        android:layout_width="100pt"
+        android:layout_height="20pt"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="40pt"
+        android:entries="@array/languages" />
+
+</RelativeLayout>

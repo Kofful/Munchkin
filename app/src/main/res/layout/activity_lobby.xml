@@ -5,6 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".lobby.LobbyActivity">
+    <Button
+        android:layout_marginTop="4pt"
+        android:layout_marginStart="4pt"
+        android:layout_width="25pt"
+        android:layout_height="25pt"
+        android:background="@drawable/cross"
+        style="@style/greyButton"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:onClick="exit"/>
 
     <LinearLayout
         android:id="@+id/linear_players"

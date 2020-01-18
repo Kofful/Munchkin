@@ -52,6 +52,8 @@ public class Server {
         String[] pairs = query.replaceAll("[}{\"\\s]", "").split(",");
         String key;
         String value;
+        for(String pair: pairs)
+            System.out.println(pair);
         for (int i = 0; i < pairs.length; i++) {
             String[] strs = pairs[i].split(":");
             key = strs[0];

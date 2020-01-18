@@ -22,4 +22,13 @@
     <string name="start">Start</string>
     <string name="waiting">Waiting</string>
     <string name="noLobbyFound">No lobby found</string>
+    <string name="email" translatable="false">Email</string>
+    <string name="password">Password</string>
+    <string name="dont_have_account">No account yet? Create one</string>
+    <string name="nickname">Nickname</string>
+    <string name="register">Register</string>
+    <string name="login">Login</string>
+    <string name="have_an_account">Have an account already? Login</string>
+    <string name="language">Language</string>
+    <string name="restart_to_apply_changes">You need to restart to apply changes</string>
 </resources>

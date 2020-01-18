@@ -1,12 +1,14 @@
 package com.munchkin.main;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.View;
 import android.widget.Toast;
@@ -18,7 +20,9 @@ import com.munchkin.creatinglobby.CreatingLobbyActivity;
 import com.munchkin.lobby.LobbyActivity;
 import com.munchkin.main.friends.FriendsFragment;
 import com.munchkin.responses.LobbyAndUsers;
+import com.munchkin.settings.SettingsActivity;
 
+import java.io.File;
 import java.util.ArrayList;
 
 
@@ -55,13 +59,17 @@ public class MainActivity extends AppCompatActivity implements MainView {
 
     @Override
     public void createLobby(View view) {
+        view.setEnabled(false);
         Intent intent = new Intent(this, CreatingLobbyActivity.class);
         intent.putExtra("user", getIntent().getSerializableExtra("user"));
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
         startActivity(intent);
+        view.postDelayed(() -> view.setEnabled(true), 1000);
     }
 
     @Override
     public void findLobby(View view) {
+        view.setEnabled(false);
         User user = (User)getIntent().getSerializableExtra("user");
         LobbyAndUsers result = presenter.findLobby(user.getNickname());
         if(result.getLobbyId() == 0) {
@@ -71,20 +79,24 @@ public class MainActivity extends AppCompatActivity implements MainView {
                     .setNegativeButton("ОК",
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id) {
-                                    //finishAffinity();
-                                    //System.exit(0);//TODO change
+                                    finishAffinity();
+                                    System.exit(0);
                                     //finish();
                                 }
                             });
             AlertDialog alert = builder.create();
             alert.show();
         } else {
+            int avatar = presenter.getAvatar();
             Intent intent = new Intent(this, LobbyActivity.class);
             intent.putExtra("user", user);
             intent.putExtra("lobbyId", result.getLobbyId());
             intent.putExtra("maxplayers", result.getMaxPlayers());
+            intent.putExtra("avatarid", avatar);
             intent.putStringArrayListExtra("players", result.getUsers());
+            intent.putIntegerArrayListExtra("avatars", result.getAvatars());
             startActivity(intent);
+            view.postDelayed(() -> view.setEnabled(true), 1000);
         }
     }
 
@@ -171,13 +183,35 @@ public class MainActivity extends AppCompatActivity implements MainView {
                 .setNegativeButton("ОК",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
-                                //finishAffinity();
-                                //System.exit(0);
+                                finishAffinity();
+                                System.exit(0);
                                 //finish();
                             }
                         });
         AlertDialog alert = builder.create();
         alert.show();
+    }
+
+    @Override
+    public void showSettings(View view) {
+        view.setEnabled(false);
+        Intent intent = new Intent(getApplicationContext(), SettingsActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        startActivity(intent);
+        view.postDelayed(() -> view.setEnabled(true), 1000);
+    }
+
+    @Override
+    public void exit(View view) {
+        try {
+            File dir = getApplicationContext().getFilesDir();
+            File file = new File(dir, "logindata");
+            file.delete();
+        } catch(Exception ex) {
+            Log.i("DEBUGGING", ex.getMessage());
+        }
+        super.onBackPressed();
+        finish();
     }
 
     @Override

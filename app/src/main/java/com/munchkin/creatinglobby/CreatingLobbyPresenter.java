@@ -1,6 +1,9 @@
 package com.munchkin.creatinglobby;
 
+import android.util.Log;
+
 import com.munchkin.User;
+import com.munchkin.main.MainModel;
 
 import java.net.SocketException;
 
@@ -16,10 +19,18 @@ public class CreatingLobbyPresenter {
     public void createLobby(int players, boolean friendsOnly) {
         try {
             model.createLobby(players, friendsOnly);
-        } catch (
-                SocketException ex) {
+        } catch (SocketException ex) {
             activity.showNoConnectionAlert();
         }
-        //TODO go to lobby
+    }
+
+    public int getAvatar() {
+        int avatarId = 0;
+        try {
+            avatarId = MainModel.getAvatar();
+        } catch(SocketException ex) {
+            activity.showNoConnectionAlert();
+        }
+        return avatarId;
     }
 }

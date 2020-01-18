@@ -23,7 +23,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".lobby.LobbyActivity"></activity>
+        <activity android:name=".settings.AvatarActivity"
+            android:screenOrientation="sensorLandscape"/>
+        <activity android:name=".settings.SettingsActivity"
+            android:screenOrientation="sensorLandscape"/>
+        <activity android:name=".lobby.LobbyActivity"
+            android:screenOrientation="sensorLandscape"/>
         <activity
             android:name=".register.RegisterActivity"
             android:screenOrientation="sensorLandscape" />
@@ -45,7 +50,7 @@
         <activity
             android:name=".main.MainActivity"
             android:screenOrientation="sensorLandscape"
-            android:theme="@style/noAnimationTheme"></activity>
+            android:theme="@style/noAnimationTheme" />
     </application>
 
 </manifest>
